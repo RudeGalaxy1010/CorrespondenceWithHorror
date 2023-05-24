@@ -129,8 +129,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\u0430\u0442\u043B\u0430\u0441 \u043A\u043D\u043E\u043F\u043A\u0438
-        \u0434\u0438\u0430\u043B\u043E\u0433\u0430 \u0445\u043E\u0440\u0440\u043E\u0440_0"
+      name: ButtonsAtlas_0
       rect:
         serializedVersion: 2
         x: 52
@@ -144,15 +143,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3d083989ac1de8f4282799c19e9641d5
-      internalID: -724009354
+      spriteID: 418bcae49251f7841a5d695f96098ebc
+      internalID: 1901269793
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u0430\u0442\u043B\u0430\u0441 \u043A\u043D\u043E\u043F\u043A\u0438
-        \u0434\u0438\u0430\u043B\u043E\u0433\u0430 \u0445\u043E\u0440\u0440\u043E\u0440_1"
+      name: ButtonsAtlas_1
       rect:
         serializedVersion: 2
         x: 881
@@ -166,15 +164,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d77f717a7c5c23f48aff20dd4bb344b3
-      internalID: 1083001058
+      spriteID: c75d1853a27cb5444b8f4c7e7146113b
+      internalID: -2130065723
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u0430\u0442\u043B\u0430\u0441 \u043A\u043D\u043E\u043F\u043A\u0438
-        \u0434\u0438\u0430\u043B\u043E\u0433\u0430 \u0445\u043E\u0440\u0440\u043E\u0440_2"
+      name: ButtonsAtlas_2
       rect:
         serializedVersion: 2
         x: 1033
@@ -188,15 +185,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cc00b23166d2c1049bc09fc6339b98a5
-      internalID: 1804230524
+      spriteID: 4e70949ef64a71648a510de1fae2cc64
+      internalID: 1850858628
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u0430\u0442\u043B\u0430\u0441 \u043A\u043D\u043E\u043F\u043A\u0438
-        \u0434\u0438\u0430\u043B\u043E\u0433\u0430 \u0445\u043E\u0440\u0440\u043E\u0440_3"
+      name: ButtonsAtlas_3
       rect:
         serializedVersion: 2
         x: 1258
@@ -210,15 +206,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 957aaeb946ca1c943a045aa33cab2858
-      internalID: 833000629
+      spriteID: d77f6e525d63de04d9f7cb2dd37c2691
+      internalID: -906508368
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u0430\u0442\u043B\u0430\u0441 \u043A\u043D\u043E\u043F\u043A\u0438
-        \u0434\u0438\u0430\u043B\u043E\u0433\u0430 \u0445\u043E\u0440\u0440\u043E\u0440_4"
+      name: ButtonsAtlas_4
       rect:
         serializedVersion: 2
         x: 1534
@@ -232,15 +227,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fbc5ddaa08c9e6842ba03e4cf018c76e
-      internalID: -1807121042
+      spriteID: 01e6d75845f670d4ba0b42fc67df9c3f
+      internalID: 1060354149
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u0430\u0442\u043B\u0430\u0441 \u043A\u043D\u043E\u043F\u043A\u0438
-        \u0434\u0438\u0430\u043B\u043E\u0433\u0430 \u0445\u043E\u0440\u0440\u043E\u0440_5"
+      name: ButtonsAtlas_5
       rect:
         serializedVersion: 2
         x: 71
@@ -254,15 +248,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 065be3d327d35c04dab822ef9c64cd81
-      internalID: -109430958
+      spriteID: 7589d53a2f55634478a405cc9431465a
+      internalID: -1600607725
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u0430\u0442\u043B\u0430\u0441 \u043A\u043D\u043E\u043F\u043A\u0438
-        \u0434\u0438\u0430\u043B\u043E\u0433\u0430 \u0445\u043E\u0440\u0440\u043E\u0440_6"
+      name: ButtonsAtlas_6
       rect:
         serializedVersion: 2
         x: 880
@@ -276,15 +269,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: db5ed624c59955743afb8a10b8a1caa0
-      internalID: 523702961
+      spriteID: fc1f950a95ca281479ecef712fc04f2e
+      internalID: 27576883
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u0430\u0442\u043B\u0430\u0441 \u043A\u043D\u043E\u043F\u043A\u0438
-        \u0434\u0438\u0430\u043B\u043E\u0433\u0430 \u0445\u043E\u0440\u0440\u043E\u0440_7"
+      name: ButtonsAtlas_7
       rect:
         serializedVersion: 2
         x: 1033
@@ -298,15 +290,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0395d0cb6eda1804492f41053e184fa0
-      internalID: 1707925089
+      spriteID: 6305d27a4321a5842b6413271a59a0ad
+      internalID: -1195084719
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u0430\u0442\u043B\u0430\u0441 \u043A\u043D\u043E\u043F\u043A\u0438
-        \u0434\u0438\u0430\u043B\u043E\u0433\u0430 \u0445\u043E\u0440\u0440\u043E\u0440_8"
+      name: ButtonsAtlas_8
       rect:
         serializedVersion: 2
         x: 1286
@@ -320,15 +311,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5c0156e662131204eb709c2db69a96e8
-      internalID: -1240435350
+      spriteID: a855a9de7d6a601499bf292ed49b72fe
+      internalID: -2099066011
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u0430\u0442\u043B\u0430\u0441 \u043A\u043D\u043E\u043F\u043A\u0438
-        \u0434\u0438\u0430\u043B\u043E\u0433\u0430 \u0445\u043E\u0440\u0440\u043E\u0440_9"
+      name: ButtonsAtlas_9
       rect:
         serializedVersion: 2
         x: 1477
@@ -342,15 +332,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 29395d00b6624bf418383ae7fe6e8969
-      internalID: 359070579
+      spriteID: 1ff3693864638e6448cf4aec723910b7
+      internalID: 1387053016
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u0430\u0442\u043B\u0430\u0441 \u043A\u043D\u043E\u043F\u043A\u0438
-        \u0434\u0438\u0430\u043B\u043E\u0433\u0430 \u0445\u043E\u0440\u0440\u043E\u0440_10"
+      name: ButtonsAtlas_10
       rect:
         serializedVersion: 2
         x: 1286
@@ -364,15 +353,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 99d6b7495ef00c34fa79a11a542a0277
-      internalID: 1628667270
+      spriteID: debf60904ed86ed48823a1b21e423f77
+      internalID: -389249300
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u0430\u0442\u043B\u0430\u0441 \u043A\u043D\u043E\u043F\u043A\u0438
-        \u0434\u0438\u0430\u043B\u043E\u0433\u0430 \u0445\u043E\u0440\u0440\u043E\u0440_11"
+      name: ButtonsAtlas_11
       rect:
         serializedVersion: 2
         x: 1286
@@ -386,15 +374,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0c25652a9550c4e4b9a6073b77a1407a
-      internalID: -1515151567
+      spriteID: cc535f7d8dbc99f4982849a37049b523
+      internalID: 1499144862
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u0430\u0442\u043B\u0430\u0441 \u043A\u043D\u043E\u043F\u043A\u0438
-        \u0434\u0438\u0430\u043B\u043E\u0433\u0430 \u0445\u043E\u0440\u0440\u043E\u0440_12"
+      name: ButtonsAtlas_12
       rect:
         serializedVersion: 2
         x: 188
@@ -408,15 +395,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c24d4c99070c95e41a641bf72fd503c4
-      internalID: -643613397
+      spriteID: 0547362beef96fe4fb0e55604e0c0f0c
+      internalID: 1815820001
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u0430\u0442\u043B\u0430\u0441 \u043A\u043D\u043E\u043F\u043A\u0438
-        \u0434\u0438\u0430\u043B\u043E\u0433\u0430 \u0445\u043E\u0440\u0440\u043E\u0440_13"
+      name: ButtonsAtlas_13
       rect:
         serializedVersion: 2
         x: 877
@@ -430,15 +416,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c6f9fc520a105a04a8a09c7694282910
-      internalID: 1426727
+      spriteID: c147aacb228de8d42924d44de7e4951a
+      internalID: 993724010
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u0430\u0442\u043B\u0430\u0441 \u043A\u043D\u043E\u043F\u043A\u0438
-        \u0434\u0438\u0430\u043B\u043E\u0433\u0430 \u0445\u043E\u0440\u0440\u043E\u0440_14"
+      name: ButtonsAtlas_14
       rect:
         serializedVersion: 2
         x: 1061
@@ -452,15 +437,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 882c6c4eb5c04074e8cdf6716bb637e2
-      internalID: -1750921101
+      spriteID: b6356f98f1340344dad55e937bfe8d60
+      internalID: -710350130
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u0430\u0442\u043B\u0430\u0441 \u043A\u043D\u043E\u043F\u043A\u0438
-        \u0434\u0438\u0430\u043B\u043E\u0433\u0430 \u0445\u043E\u0440\u0440\u043E\u0440_15"
+      name: ButtonsAtlas_15
       rect:
         serializedVersion: 2
         x: 1267
@@ -474,15 +458,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ac424fe686dc1fc4bb8cd6e6aacb1e18
-      internalID: -1343873297
+      spriteID: 52a5b71797d442441b2fa90107f90f7a
+      internalID: -1517945339
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u0430\u0442\u043B\u0430\u0441 \u043A\u043D\u043E\u043F\u043A\u0438
-        \u0434\u0438\u0430\u043B\u043E\u0433\u0430 \u0445\u043E\u0440\u0440\u043E\u0440_16"
+      name: ButtonsAtlas_16
       rect:
         serializedVersion: 2
         x: 1636
@@ -496,15 +479,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3a5bcbfd70dfb4d4a93abd006a199829
-      internalID: -450966476
+      spriteID: 69a34471809fb564e90966bc3efb8d84
+      internalID: 312904931
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u0430\u0442\u043B\u0430\u0441 \u043A\u043D\u043E\u043F\u043A\u0438
-        \u0434\u0438\u0430\u043B\u043E\u0433\u0430 \u0445\u043E\u0440\u0440\u043E\u0440_17"
+      name: ButtonsAtlas_17
       rect:
         serializedVersion: 2
         x: 885
@@ -518,15 +500,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d98138d42ec5db54a81bd0fe1939872f
-      internalID: -625598528
+      spriteID: a27c1fc7ba6b27a4e9b3a87b9a04e6cf
+      internalID: 1556993478
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u0430\u0442\u043B\u0430\u0441 \u043A\u043D\u043E\u043F\u043A\u0438
-        \u0434\u0438\u0430\u043B\u043E\u0433\u0430 \u0445\u043E\u0440\u0440\u043E\u0440_18"
+      name: ButtonsAtlas_18
       rect:
         serializedVersion: 2
         x: 1049
@@ -540,15 +521,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 068f4f4c559eb5e41b3612dac9e7d153
-      internalID: -1649029988
+      spriteID: 696193d365b4dfe4ab07807d73abae17
+      internalID: 1619672925
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u0430\u0442\u043B\u0430\u0441 \u043A\u043D\u043E\u043F\u043A\u0438
-        \u0434\u0438\u0430\u043B\u043E\u0433\u0430 \u0445\u043E\u0440\u0440\u043E\u0440_19"
+      name: ButtonsAtlas_19
       rect:
         serializedVersion: 2
         x: 1285
@@ -562,8 +542,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bcf70b5e08f7a3d46839a424865bd298
-      internalID: -211818583
+      spriteID: b18dd2ae4676dd44b9b62ae79ba65a61
+      internalID: -39197267
       vertices: []
       indices: 
       edges: []
@@ -579,26 +559,26 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      "\u0430\u0442\u043B\u0430\u0441 \u043A\u043D\u043E\u043F\u043A\u0438 \u0434\u0438\u0430\u043B\u043E\u0433\u0430 \u0445\u043E\u0440\u0440\u043E\u0440_19": -211818583
-      "\u0430\u0442\u043B\u0430\u0441 \u043A\u043D\u043E\u043F\u043A\u0438 \u0434\u0438\u0430\u043B\u043E\u0433\u0430 \u0445\u043E\u0440\u0440\u043E\u0440_0": -724009354
-      "\u0430\u0442\u043B\u0430\u0441 \u043A\u043D\u043E\u043F\u043A\u0438 \u0434\u0438\u0430\u043B\u043E\u0433\u0430 \u0445\u043E\u0440\u0440\u043E\u0440_11": -1515151567
-      "\u0430\u0442\u043B\u0430\u0441 \u043A\u043D\u043E\u043F\u043A\u0438 \u0434\u0438\u0430\u043B\u043E\u0433\u0430 \u0445\u043E\u0440\u0440\u043E\u0440_1": 1083001058
-      "\u0430\u0442\u043B\u0430\u0441 \u043A\u043D\u043E\u043F\u043A\u0438 \u0434\u0438\u0430\u043B\u043E\u0433\u0430 \u0445\u043E\u0440\u0440\u043E\u0440_7": 1707925089
-      "\u0430\u0442\u043B\u0430\u0441 \u043A\u043D\u043E\u043F\u043A\u0438 \u0434\u0438\u0430\u043B\u043E\u0433\u0430 \u0445\u043E\u0440\u0440\u043E\u0440_18": -1649029988
-      "\u0430\u0442\u043B\u0430\u0441 \u043A\u043D\u043E\u043F\u043A\u0438 \u0434\u0438\u0430\u043B\u043E\u0433\u0430 \u0445\u043E\u0440\u0440\u043E\u0440_3": 833000629
-      "\u0430\u0442\u043B\u0430\u0441 \u043A\u043D\u043E\u043F\u043A\u0438 \u0434\u0438\u0430\u043B\u043E\u0433\u0430 \u0445\u043E\u0440\u0440\u043E\u0440_16": -450966476
-      "\u0430\u0442\u043B\u0430\u0441 \u043A\u043D\u043E\u043F\u043A\u0438 \u0434\u0438\u0430\u043B\u043E\u0433\u0430 \u0445\u043E\u0440\u0440\u043E\u0440_9": 359070579
-      "\u0430\u0442\u043B\u0430\u0441 \u043A\u043D\u043E\u043F\u043A\u0438 \u0434\u0438\u0430\u043B\u043E\u0433\u0430 \u0445\u043E\u0440\u0440\u043E\u0440_17": -625598528
-      "\u0430\u0442\u043B\u0430\u0441 \u043A\u043D\u043E\u043F\u043A\u0438 \u0434\u0438\u0430\u043B\u043E\u0433\u0430 \u0445\u043E\u0440\u0440\u043E\u0440_5": -109430958
-      "\u0430\u0442\u043B\u0430\u0441 \u043A\u043D\u043E\u043F\u043A\u0438 \u0434\u0438\u0430\u043B\u043E\u0433\u0430 \u0445\u043E\u0440\u0440\u043E\u0440_2": 1804230524
-      "\u0430\u0442\u043B\u0430\u0441 \u043A\u043D\u043E\u043F\u043A\u0438 \u0434\u0438\u0430\u043B\u043E\u0433\u0430 \u0445\u043E\u0440\u0440\u043E\u0440_4": -1807121042
-      "\u0430\u0442\u043B\u0430\u0441 \u043A\u043D\u043E\u043F\u043A\u0438 \u0434\u0438\u0430\u043B\u043E\u0433\u0430 \u0445\u043E\u0440\u0440\u043E\u0440_15": -1343873297
-      "\u0430\u0442\u043B\u0430\u0441 \u043A\u043D\u043E\u043F\u043A\u0438 \u0434\u0438\u0430\u043B\u043E\u0433\u0430 \u0445\u043E\u0440\u0440\u043E\u0440_10": 1628667270
-      "\u0430\u0442\u043B\u0430\u0441 \u043A\u043D\u043E\u043F\u043A\u0438 \u0434\u0438\u0430\u043B\u043E\u0433\u0430 \u0445\u043E\u0440\u0440\u043E\u0440_14": -1750921101
-      "\u0430\u0442\u043B\u0430\u0441 \u043A\u043D\u043E\u043F\u043A\u0438 \u0434\u0438\u0430\u043B\u043E\u0433\u0430 \u0445\u043E\u0440\u0440\u043E\u0440_6": 523702961
-      "\u0430\u0442\u043B\u0430\u0441 \u043A\u043D\u043E\u043F\u043A\u0438 \u0434\u0438\u0430\u043B\u043E\u0433\u0430 \u0445\u043E\u0440\u0440\u043E\u0440_13": 1426727
-      "\u0430\u0442\u043B\u0430\u0441 \u043A\u043D\u043E\u043F\u043A\u0438 \u0434\u0438\u0430\u043B\u043E\u0433\u0430 \u0445\u043E\u0440\u0440\u043E\u0440_12": -643613397
-      "\u0430\u0442\u043B\u0430\u0441 \u043A\u043D\u043E\u043F\u043A\u0438 \u0434\u0438\u0430\u043B\u043E\u0433\u0430 \u0445\u043E\u0440\u0440\u043E\u0440_8": -1240435350
+      ButtonsAtlas_6: 27576883
+      ButtonsAtlas_8: -2099066011
+      ButtonsAtlas_16: 312904931
+      ButtonsAtlas_15: -1517945339
+      ButtonsAtlas_9: 1387053016
+      ButtonsAtlas_12: 1815820001
+      ButtonsAtlas_18: 1619672925
+      ButtonsAtlas_17: 1556993478
+      ButtonsAtlas_10: -389249300
+      ButtonsAtlas_5: -1600607725
+      ButtonsAtlas_1: -2130065723
+      ButtonsAtlas_11: 1499144862
+      ButtonsAtlas_2: 1850858628
+      ButtonsAtlas_3: -906508368
+      ButtonsAtlas_14: -710350130
+      ButtonsAtlas_0: 1901269793
+      ButtonsAtlas_19: -39197267
+      ButtonsAtlas_13: 993724010
+      ButtonsAtlas_4: 1060354149
+      ButtonsAtlas_7: -1195084719
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
