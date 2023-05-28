@@ -1,17 +1,24 @@
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+
 public class QuestPicker : IInitable, IDeinitable
 {
     private const string DefaultQuestName = "-";
 
     private GameData _gameData;
+    private Sprite[]_questsPreview;
     private QuestPickerEmitter _emitter;
     private int _currentQuestPointer;
 
-    public QuestPicker(GameData gameData, QuestPickerEmitter emitter)
+    public QuestPicker(GameData gameData, Sprite[] questsPreview, QuestPickerEmitter emitter)
     {
         _gameData = gameData;
+        _questsPreview = questsPreview;
         _emitter = emitter;
         _currentQuestPointer = 0;
         UpdateQuestName();
+        UpdateAvatar();
     }
 
     public string CurrentQuestName => _gameData.QuestsNames != null || _gameData.QuestsNames.Length > 0 ?
@@ -39,6 +46,7 @@ public class QuestPicker : IInitable, IDeinitable
         }
 
         UpdateQuestName();
+        UpdateAvatar();
     }
 
     private void OnPreviousQuestButtonClicked()
@@ -51,11 +59,17 @@ public class QuestPicker : IInitable, IDeinitable
         }
 
         UpdateQuestName();
+        UpdateAvatar();
     }
 
     private void UpdateQuestName()
     {
         _emitter.QuestNameText.text = _gameData.QuestsNames.Length > 0 ?
             _gameData.QuestsNames[_currentQuestPointer] : DefaultQuestName;
+    }
+
+    private void UpdateAvatar()
+    {
+        _emitter.AvatarImage.sprite = _questsPreview.FirstOrDefault(s => s != null && s.name == CurrentQuestName);
     }
 }

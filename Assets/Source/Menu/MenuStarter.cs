@@ -3,6 +3,7 @@ using UnityEngine;
 public class MenuStarter : Starter
 {
     private const string QuestsNamesPath = "GameData";
+    private const string QuestsPreviewPath = "HeroesAtlas";
 
     [SerializeField] private QuestPickerEmitter _questPickPanelEmitter;
     [SerializeField] private RatingDisplayerEmitter _ratingDisplayerEmitter;
@@ -12,9 +13,10 @@ public class MenuStarter : Starter
     {
         GameData gameData = LoadGameData();
         PlayerData playerData = LoadPlayerData(gameData);
+        Sprite[] questsPreview = LoadQuestsPreview();
 
         RatingDisplayer ratingDisplayer = new RatingDisplayer(gameData, playerData, _ratingDisplayerEmitter);
-        QuestPicker questPicker = Register(new QuestPicker(gameData, _questPickPanelEmitter));
+        QuestPicker questPicker = Register(new QuestPicker(gameData, questsPreview, _questPickPanelEmitter));
         QuestLoader questLoader = Register(new QuestLoader(questPicker, _questLoaderEmitter));
     }
 
@@ -34,5 +36,10 @@ public class MenuStarter : Starter
         }
 
         return gameData.DefaultPlayerData;
+    }
+
+    private Sprite[] LoadQuestsPreview()
+    {
+        return Resources.LoadAll<Sprite>(QuestsPreviewPath);
     }
 }

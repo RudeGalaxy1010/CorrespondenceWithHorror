@@ -129,7 +129,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: HeroesAtlas_0
+      name: "\u041C\u0438\u0448\u043A\u0430 \u0424\u0440\u044D\u0434\u0434\u0438"
       rect:
         serializedVersion: 2
         x: 39
@@ -137,7 +137,7 @@ TextureImporter:
         width: 445
         height: 444
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -150,7 +150,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroesAtlas_1
+      name: "\u041C\u043E\u043C\u043E"
       rect:
         serializedVersion: 2
         x: 532
@@ -158,7 +158,7 @@ TextureImporter:
         width: 441
         height: 441
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -171,7 +171,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroesAtlas_2
+      name: "\u0413\u0440\u044D\u043D\u043D\u0438"
       rect:
         serializedVersion: 2
         x: 1055
@@ -179,7 +179,7 @@ TextureImporter:
         width: 448
         height: 448
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -196,11 +196,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1571
-        y: 1535
+        y: 1531
         width: 450
         height: 450
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -213,7 +213,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroesAtlas_4
+      name: "\u0425\u0435\u0440\u043E\u0431\u0440\u0438\u043D"
       rect:
         serializedVersion: 2
         x: 41
@@ -221,7 +221,7 @@ TextureImporter:
         width: 443
         height: 443
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -234,7 +234,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroesAtlas_5
+      name: "\u0411\u0430\u043D \u0411\u0430\u043D"
       rect:
         serializedVersion: 2
         x: 532
@@ -242,7 +242,7 @@ TextureImporter:
         width: 458
         height: 457
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -255,7 +255,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroesAtlas_6
+      name: "\u0414\u0436\u0430\u043C\u0431\u043E \u0414\u0436\u043E\u0448"
       rect:
         serializedVersion: 2
         x: 1057
@@ -263,7 +263,7 @@ TextureImporter:
         width: 440
         height: 439
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -276,7 +276,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroesAtlas_7
+      name: "\u0421\u0438\u0440\u0435\u043D\u043E\u0433\u043E\u043B\u043E\u0432\u044B\u0439"
       rect:
         serializedVersion: 2
         x: 1566
@@ -284,7 +284,7 @@ TextureImporter:
         width: 440
         height: 441
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -297,7 +297,8 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroesAtlas_8
+      name: "\u0421\u0435\u0441\u0442\u0440\u0430 \u041C\u044D\u043B\u0435\u0434\u0438\u043D
+        \u0421\u0430\u043B\u043B\u0438\u0432\u0430\u043D"
       rect:
         serializedVersion: 2
         x: 41
@@ -305,7 +306,7 @@ TextureImporter:
         width: 447
         height: 446
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -318,7 +319,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroesAtlas_9
+      name: "\u041C\u043B\u0430\u0434\u0435\u043D\u0435\u0446 \u0432 \u0436\u0435\u043B\u0442\u043E\u043C"
       rect:
         serializedVersion: 2
         x: 549
@@ -326,7 +327,7 @@ TextureImporter:
         width: 441
         height: 441
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -339,7 +340,8 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroesAtlas_10
+      name: "\u0425\u0430\u0433\u0438 \u0412\u0430\u0433\u0438 \u0438 \u041A\u0438\u0441\u0438
+        \u041C\u0438\u0441\u0438"
       rect:
         serializedVersion: 2
         x: 1087
@@ -347,7 +349,7 @@ TextureImporter:
         width: 443
         height: 443
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -370,17 +372,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      HeroesAtlas_4: -1548004821
-      HeroesAtlas_6: 1375843291
-      HeroesAtlas_1: -1488814666
-      HeroesAtlas_7: -1228692470
-      HeroesAtlas_2: 706281766
-      HeroesAtlas_5: -1321119177
-      HeroesAtlas_10: 2032566761
-      HeroesAtlas_0: 680700722
-      HeroesAtlas_8: 1572322827
-      HeroesAtlas_9: 777275904
+      "\u0421\u0438\u0440\u0435\u043D\u043E\u0433\u043E\u043B\u043E\u0432\u044B\u0439": -1228692470
+      "\u0421\u0435\u0441\u0442\u0440\u0430 \u041C\u044D\u043B\u0435\u0434\u0438\u043D \u0421\u0430\u043B\u043B\u0438\u0432\u0430\u043D": 1572322827
+      "\u041C\u043E\u043C\u043E": -1488814666
+      "\u0425\u0430\u0433\u0438 \u0412\u0430\u0433\u0438 \u0438 \u041A\u0438\u0441\u0438 \u041C\u0438\u0441\u0438": 2032566761
+      "\u041C\u043B\u0430\u0434\u0435\u043D\u0435\u0446 \u0432 \u0436\u0435\u043B\u0442\u043E\u043C": 777275904
+      "\u041C\u0438\u0448\u043A\u0430 \u0424\u0440\u044D\u0434\u0434\u0438": 680700722
+      "\u0414\u0436\u0430\u043C\u0431\u043E \u0414\u0436\u043E\u0448": 1375843291
+      "\u0413\u0440\u044D\u043D\u043D\u0438": 706281766
+      "\u0425\u0435\u0440\u043E\u0431\u0440\u0438\u043D": -1548004821
       HeroesAtlas_3: 1529215475
+      "\u0411\u0430\u043D \u0411\u0430\u043D": -1321119177
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
