@@ -1,8 +1,10 @@
-using UnityEngine.SceneManagement;
+using IJunior.TypedScenes;
+using System;
+using UnityEngine;
 
 public class QuestLoader : IInitable, IDeinitable
 {
-    private const int QuestSceneIndex = 1;
+    private const string LoadFailedExceptionMessage = "Quest loading failed";
 
     private QuestPicker _questPicker;
     private QuestLoaderEmitter _questLoaderEmitter;
@@ -25,8 +27,32 @@ public class QuestLoader : IInitable, IDeinitable
 
     private void OnLoadButtonClicked()
     {
-        string questName = _questPicker.CurrentQuestName;
-        // Load scene with parameter
-        SceneManager.LoadScene(QuestSceneIndex);
+        Quest quest = TryLoadQuest();
+
+        if (quest != null)
+        {
+            GameScene.Load(quest);
+        }
+    }
+
+    private Quest TryLoadQuest()
+    {
+        try
+        {
+            string questPath = _questPicker.CurrentQuestName;
+            TextAsset questsNamesText = Resources.Load<TextAsset>(questPath);
+            
+            if (questsNamesText == null)
+            {
+                throw new Exception(LoadFailedExceptionMessage);
+            }
+
+            return JsonUtility.FromJson<Quest>(questsNamesText.text);
+        }
+        catch (Exception exception)
+        {
+            Debug.LogError(exception.Message);
+            return null;
+        }
     }
 }

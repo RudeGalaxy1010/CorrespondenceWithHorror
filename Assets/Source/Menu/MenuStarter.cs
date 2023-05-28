@@ -1,7 +1,6 @@
-using System.Collections.Generic;
 using UnityEngine;
 
-public class MenuStarter : MonoBehaviour
+public class MenuStarter : Starter
 {
     private const string QuestsNamesPath = "GameData";
 
@@ -9,16 +8,7 @@ public class MenuStarter : MonoBehaviour
     [SerializeField] private RatingDisplayerEmitter _ratingDisplayerEmitter;
     [SerializeField] private QuestLoaderEmitter _questLoaderEmitter;
 
-    private List<IInitable> _initables;
-    private List<IDeinitable> _deinitables;
-
-    private void Awake()
-    {
-        _initables = new List<IInitable>();
-        _deinitables = new List<IDeinitable>();
-    }
-
-    private void Start()
+    protected override void OnStart()
     {
         GameData gameData = LoadGameData();
         PlayerData playerData = LoadPlayerData(gameData);
@@ -26,13 +16,6 @@ public class MenuStarter : MonoBehaviour
         RatingDisplayer ratingDisplayer = new RatingDisplayer(gameData, playerData, _ratingDisplayerEmitter);
         QuestPicker questPicker = Register(new QuestPicker(gameData, _questPickPanelEmitter));
         QuestLoader questLoader = Register(new QuestLoader(questPicker, _questLoaderEmitter));
-
-        Init();
-    }
-
-    private void OnDestroy()
-    {
-        Deinit();
     }
 
     private GameData LoadGameData()
@@ -51,35 +34,5 @@ public class MenuStarter : MonoBehaviour
         }
 
         return gameData.DefaultPlayerData;
-    }
-
-    private T Register<T>(T service)
-    {
-        if (service is IInitable)
-        {
-            _initables.Add(service as IInitable);
-        }
-        if (service is IDeinitable)
-        {
-            _deinitables.Add(service as IDeinitable);
-        }
-
-        return service;
-    }
-
-    private void Init()
-    {
-        for (int i = 0; i < _initables.Count; i++)
-        {
-            _initables[i].Init();
-        }
-    }
-
-    private void Deinit()
-    {
-        for (int i = 0; i < _deinitables.Count; i++)
-        {
-            _deinitables[i].Deinit();
-        }
     }
 }
