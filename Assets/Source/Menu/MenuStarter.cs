@@ -5,8 +5,9 @@ public class MenuStarter : MonoBehaviour
 {
     private const string QuestsNamesPath = "GameData";
 
-    [SerializeField] private QuestPickPanelEmitter _questPickPanelEmitter;
+    [SerializeField] private QuestPickerEmitter _questPickPanelEmitter;
     [SerializeField] private RatingDisplayerEmitter _ratingDisplayerEmitter;
+    [SerializeField] private QuestLoaderEmitter _questLoaderEmitter;
 
     private List<IInitable> _initables;
     private List<IDeinitable> _deinitables;
@@ -20,11 +21,11 @@ public class MenuStarter : MonoBehaviour
     private void Start()
     {
         GameData gameData = LoadGameData();
-        PlayerData playerData = gameData.DefaultPlayerData; // TODO: replace with loading
+        PlayerData playerData = LoadPlayerData(gameData);
 
-        QuestPickPanel questPickPanel = new QuestPickPanel(gameData, _questPickPanelEmitter);
-        Register(questPickPanel);
         RatingDisplayer ratingDisplayer = new RatingDisplayer(gameData, playerData, _ratingDisplayerEmitter);
+        QuestPicker questPicker = Register(new QuestPicker(gameData, _questPickPanelEmitter));
+        QuestLoader questLoader = Register(new QuestLoader(questPicker, _questLoaderEmitter));
 
         Init();
     }
@@ -40,16 +41,30 @@ public class MenuStarter : MonoBehaviour
         return JsonUtility.FromJson<GameData>(questsNamesText.text);
     }
 
-    private void Register(object obj)
+    private PlayerData LoadPlayerData(GameData gameData)
     {
-        if (obj is IInitable)
+        SaveLoad saveLoad = new SaveLoad();
+
+        if (saveLoad.HasSave == true)
         {
-            _initables.Add(obj as IInitable);
+            return saveLoad.LoadPLayerData();
         }
-        if (obj is IDeinitable)
+
+        return gameData.DefaultPlayerData;
+    }
+
+    private T Register<T>(T service)
+    {
+        if (service is IInitable)
         {
-            _deinitables.Add(obj as IDeinitable);
+            _initables.Add(service as IInitable);
         }
+        if (service is IDeinitable)
+        {
+            _deinitables.Add(service as IDeinitable);
+        }
+
+        return service;
     }
 
     private void Init()

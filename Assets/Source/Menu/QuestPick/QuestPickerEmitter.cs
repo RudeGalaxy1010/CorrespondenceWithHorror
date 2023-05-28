@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class QuestPickPanelEmitter : MonoBehaviour
+public class QuestPickerEmitter : MonoBehaviour
 {
     public Button NextQuestButton;
     public Button PreviousQuestButton;

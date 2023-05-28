@@ -1,20 +1,21 @@
-using System.Linq;
-
-public class QuestPickPanel : IInitable, IDeinitable
+public class QuestPicker : IInitable, IDeinitable
 {
     private const string DefaultQuestName = "-";
 
     private GameData _gameData;
-    private QuestPickPanelEmitter _emitter;
+    private QuestPickerEmitter _emitter;
     private int _currentQuestPointer;
 
-    public QuestPickPanel(GameData gameData, QuestPickPanelEmitter emitter)
+    public QuestPicker(GameData gameData, QuestPickerEmitter emitter)
     {
         _gameData = gameData;
         _emitter = emitter;
         _currentQuestPointer = 0;
         UpdateQuestName();
     }
+
+    public string CurrentQuestName => _gameData.QuestsNames != null || _gameData.QuestsNames.Length > 0 ?
+        _gameData.QuestsNames[_currentQuestPointer] : DefaultQuestName;
 
     public void Init()
     {
