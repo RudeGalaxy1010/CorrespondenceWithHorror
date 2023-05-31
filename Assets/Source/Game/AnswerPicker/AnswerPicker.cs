@@ -1,10 +1,7 @@
-using System;
 using System.Collections.Generic;
 
 public class AnswerPicker : IInitable, IDeinitable
 {
-    public event Action<Answer> AnswerPicked;
-
     private DialogueDisplayer _dialogueDisplayer;
     private AnswerPickerEmitter _emitter;
 
@@ -82,8 +79,7 @@ public class AnswerPicker : IInitable, IDeinitable
 
     private void OnAnswerButtonClicked(Answer answer)
     {
-        // TODO: display answer
-        AnswerPicked?.Invoke(answer);
+        _dialogueDisplayer.DisplayAnswer(answer.Text);
         _dialogueDisplayer.DisplayQuestion(answer.NextQuestionNumber);
     }
 }

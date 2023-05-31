@@ -31,4 +31,10 @@ public class DialogueDisplayer : IInitable
         message.Display(_currentQuestion.Text);
         QuestionChanged?.Invoke(_currentQuestion);
     }
+
+    public void DisplayAnswer(string answer)
+    {
+        Message message = UnityEngine.Object.Instantiate(_emitter.PlayerMessagePrefab, _emitter.Container);
+        message.Display(answer);
+    }
 }

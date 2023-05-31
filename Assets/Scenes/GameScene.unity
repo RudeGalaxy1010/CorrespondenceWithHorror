@@ -185,6 +185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Container: {fileID: 1789734572}
   BotMessagePrefab: {fileID: -6633983446629582130, guid: 84ddd5862480de04d9cd03bc7475d98f, type: 3}
+  PlayerMessagePrefab: {fileID: 6507100763534023385, guid: 93a32224a682bac4daf2238d16c7193a, type: 3}
 --- !u!114 &132338228
 MonoBehaviour:
   m_ObjectHideFlags: 0
