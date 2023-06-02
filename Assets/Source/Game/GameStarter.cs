@@ -24,6 +24,7 @@ public class GameStarter : Starter, ISceneLoadHandler<Quest>
 
         DialogueDisplayer dialogueDisplayer = Register(new DialogueDisplayer(_quest, _dialogueDisplayerEmitter));
         AnswerPicker answerPicker = Register(new AnswerPicker(dialogueDisplayer, _answerPickerEmitter));
+        EndGame endGame = Register(new EndGame(dialogueDisplayer));
         MenuLoader menuLoader = Register(new MenuLoader(_menuLoaderEmitter));
     }
 }
