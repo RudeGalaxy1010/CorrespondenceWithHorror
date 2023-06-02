@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 132338226}
   - component: {fileID: 132338227}
   - component: {fileID: 132338228}
+  - component: {fileID: 132338229}
   m_Layer: 0
   m_Name: Starter
   m_TagString: Untagged
@@ -171,6 +172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dialogueDisplayerEmitter: {fileID: 132338227}
   _answerPickerEmitter: {fileID: 132338228}
+  _menuLoaderEmitter: {fileID: 132338229}
 --- !u!114 &132338227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,6 +202,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ButtonPrefab: {fileID: 3730303399241400760, guid: f26d10fe2000498409346e5e1e119fa6, type: 3}
   Container: {fileID: 955814818}
+--- !u!114 &132338229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 132338224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7883ab2158da6141912272eb7fc6ad4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BackButton: {fileID: 1875158127}
 --- !u!1 &137242913
 GameObject:
   m_ObjectHideFlags: 0

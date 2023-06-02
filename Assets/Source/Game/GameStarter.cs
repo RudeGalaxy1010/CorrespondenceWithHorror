@@ -5,6 +5,7 @@ public class GameStarter : Starter, ISceneLoadHandler<Quest>
 {
     [SerializeField] private DialogueDisplayerEmitter _dialogueDisplayerEmitter;
     [SerializeField] private AnswerPickerEmitter _answerPickerEmitter;
+    [SerializeField] private MenuLoaderEmitter _menuLoaderEmitter;
 
     private Quest _quest;
 
@@ -15,7 +16,14 @@ public class GameStarter : Starter, ISceneLoadHandler<Quest>
 
     protected override void OnStart()
     {
+        if (_quest == null)
+        {
+            Debug.LogError("Failed to load quest");
+            return;
+        }
+
         DialogueDisplayer dialogueDisplayer = Register(new DialogueDisplayer(_quest, _dialogueDisplayerEmitter));
         AnswerPicker answerPicker = Register(new AnswerPicker(dialogueDisplayer, _answerPickerEmitter));
+        MenuLoader menuLoader = Register(new MenuLoader(_menuLoaderEmitter));
     }
 }
