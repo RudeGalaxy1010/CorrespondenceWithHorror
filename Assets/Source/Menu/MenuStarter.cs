@@ -11,8 +11,10 @@ public class MenuStarter : Starter
 
     protected override void OnStart()
     {
-        GameData gameData = LoadGameData();
-        PlayerData playerData = LoadPlayerData(gameData);
+        string lang = "ru"; // TODO: Get from localization
+
+        GameData gameData = LoadGameData(lang);
+        PlayerData playerData = LoadPlayerData();
         Sprite[] questsPreview = LoadQuestsPreview();
 
         RatingDisplayer ratingDisplayer = new RatingDisplayer(gameData, playerData, _ratingDisplayerEmitter);
@@ -20,13 +22,14 @@ public class MenuStarter : Starter
         QuestLoader questLoader = Register(new QuestLoader(questPicker, _questLoaderEmitter));
     }
 
-    private GameData LoadGameData()
+    private GameData LoadGameData(string lang)
     {
-        TextAsset questsNamesText = Resources.Load<TextAsset>(QuestsNamesPath);
+        string fullPath = $"{QuestsNamesPath}_{lang}";
+        TextAsset questsNamesText = Resources.Load<TextAsset>(fullPath);
         return JsonUtility.FromJson<GameData>(questsNamesText.text);
     }
 
-    private PlayerData LoadPlayerData(GameData gameData)
+    private PlayerData LoadPlayerData()
     {
         SaveLoad saveLoad = new SaveLoad();
 
@@ -35,7 +38,7 @@ public class MenuStarter : Starter
             return saveLoad.LoadPLayerData();
         }
 
-        return gameData.DefaultPlayerData;
+        return new PlayerData();
     }
 
     private Sprite[] LoadQuestsPreview()

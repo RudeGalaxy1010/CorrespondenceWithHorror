@@ -27,32 +27,11 @@ public class QuestLoader : IInitable, IDeinitable
 
     private void OnLoadButtonClicked()
     {
-        Quest quest = TryLoadQuest();
+        Quest quest = _questPicker.CurrentQuest;
 
         if (quest != null)
         {
             GameScene.Load(quest);
-        }
-    }
-
-    private Quest TryLoadQuest()
-    {
-        try
-        {
-            string questPath = _questPicker.CurrentQuestName;
-            TextAsset questsNamesText = Resources.Load<TextAsset>(questPath);
-            
-            if (questsNamesText == null)
-            {
-                throw new Exception(LoadFailedExceptionMessage);
-            }
-
-            return JsonUtility.FromJson<Quest>(questsNamesText.text);
-        }
-        catch (Exception exception)
-        {
-            Debug.LogError(exception.Message);
-            return null;
         }
     }
 }

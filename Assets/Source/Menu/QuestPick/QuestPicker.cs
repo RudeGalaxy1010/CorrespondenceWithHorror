@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -7,7 +6,7 @@ public class QuestPicker : IInitable, IDeinitable
     private const string DefaultQuestName = "-";
 
     private GameData _gameData;
-    private Sprite[]_questsPreview;
+    private Sprite[] _questsPreview;
     private QuestPickerEmitter _emitter;
     private int _currentQuestPointer;
 
@@ -21,8 +20,8 @@ public class QuestPicker : IInitable, IDeinitable
         UpdateAvatar();
     }
 
-    public string CurrentQuestName => _gameData.QuestsNames != null || _gameData.QuestsNames.Length > 0 ?
-        _gameData.QuestsNames[_currentQuestPointer] : DefaultQuestName;
+    public Quest CurrentQuest => _gameData.Quests != null || _gameData.Quests.Length > 0 ?
+        _gameData.Quests[_currentQuestPointer] : null;
 
     public void Init()
     {
@@ -40,7 +39,7 @@ public class QuestPicker : IInitable, IDeinitable
     {
         _currentQuestPointer++;
 
-        if (_currentQuestPointer >= _gameData.QuestsNames.Length)
+        if (_currentQuestPointer >= _gameData.Quests.Length)
         {
             _currentQuestPointer = 0;
         }
@@ -55,7 +54,7 @@ public class QuestPicker : IInitable, IDeinitable
 
         if (_currentQuestPointer < 0)
         {
-            _currentQuestPointer = _gameData.QuestsNames.Length - 1;
+            _currentQuestPointer = _gameData.Quests.Length - 1;
         }
 
         UpdateQuestName();
@@ -64,12 +63,12 @@ public class QuestPicker : IInitable, IDeinitable
 
     private void UpdateQuestName()
     {
-        _emitter.QuestNameText.text = _gameData.QuestsNames.Length > 0 ?
-            _gameData.QuestsNames[_currentQuestPointer] : DefaultQuestName;
+        _emitter.QuestNameText.text = _gameData.Quests.Length > 0 ?
+            _gameData.Quests[_currentQuestPointer].Name : DefaultQuestName;
     }
 
     private void UpdateAvatar()
     {
-        _emitter.AvatarImage.sprite = _questsPreview.FirstOrDefault(s => s != null && s.name == CurrentQuestName);
+        _emitter.AvatarImage.sprite = _questsPreview.FirstOrDefault(s => s != null && s.name == CurrentQuest.Name);
     }
 }
