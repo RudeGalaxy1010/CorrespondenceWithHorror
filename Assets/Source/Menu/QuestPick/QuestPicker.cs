@@ -1,9 +1,12 @@
+using System;
 using System.Linq;
 using UnityEngine;
 
 public class QuestPicker : IInitable, IDeinitable
 {
     private const string DefaultQuestName = "-";
+
+    public event Action<Quest> QuestUpdated;
 
     private GameData _gameData;
     private Sprite[] _questsPreview;
@@ -44,8 +47,7 @@ public class QuestPicker : IInitable, IDeinitable
             _currentQuestPointer = 0;
         }
 
-        UpdateQuestName();
-        UpdateAvatar();
+        Update();
     }
 
     private void OnPreviousQuestButtonClicked()
@@ -57,8 +59,14 @@ public class QuestPicker : IInitable, IDeinitable
             _currentQuestPointer = _gameData.Quests.Length - 1;
         }
 
+        Update();
+    }
+
+    private void Update()
+    {
         UpdateQuestName();
         UpdateAvatar();
+        QuestUpdated?.Invoke(CurrentQuest);
     }
 
     private void UpdateQuestName()
