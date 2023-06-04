@@ -1,17 +1,19 @@
 using IJunior.TypedScenes;
 using UnityEngine;
 
-public class GameStarter : Starter, ISceneLoadHandler<Quest>
+public class GameStarter : Starter, ISceneLoadHandler<QuestData>
 {
     [SerializeField] private DialogueDisplayerEmitter _dialogueDisplayerEmitter;
     [SerializeField] private AnswerPickerEmitter _answerPickerEmitter;
     [SerializeField] private MenuLoaderEmitter _menuLoaderEmitter;
 
     private Quest _quest;
+    private PlayerData _playerData;
 
-    public void OnSceneLoaded(Quest quest)
+    public void OnSceneLoaded(QuestData questData)
     {
-        _quest = quest;
+        _quest = questData.Quest;
+        _playerData = questData.PlayerData;
     }
 
     protected override void OnStart()
@@ -26,5 +28,6 @@ public class GameStarter : Starter, ISceneLoadHandler<Quest>
         AnswerPicker answerPicker = Register(new AnswerPicker(dialogueDisplayer, _answerPickerEmitter));
         EndGame endGame = Register(new EndGame(dialogueDisplayer));
         MenuLoader menuLoader = Register(new MenuLoader(_menuLoaderEmitter));
+        ResultSaver resultSaver = Register(new ResultSaver(_playerData, _quest, endGame, new SaveLoad()));
     }
 }

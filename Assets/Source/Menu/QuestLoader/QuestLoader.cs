@@ -1,16 +1,14 @@
 using IJunior.TypedScenes;
-using System;
-using UnityEngine;
 
 public class QuestLoader : IInitable, IDeinitable
 {
-    private const string LoadFailedExceptionMessage = "Quest loading failed";
-
+    private PlayerData _playerData;
     private QuestPicker _questPicker;
     private QuestLoaderEmitter _questLoaderEmitter;
 
-    public QuestLoader(QuestPicker questPicker, QuestLoaderEmitter questLoaderEmitter)
+    public QuestLoader(PlayerData playerData, QuestPicker questPicker, QuestLoaderEmitter questLoaderEmitter)
     {
+        _playerData = playerData;
         _questPicker = questPicker;
         _questLoaderEmitter = questLoaderEmitter;
     }
@@ -27,11 +25,6 @@ public class QuestLoader : IInitable, IDeinitable
 
     private void OnLoadButtonClicked()
     {
-        Quest quest = _questPicker.CurrentQuest;
-
-        if (quest != null)
-        {
-            GameScene.Load(quest);
-        }
+        GameScene.Load(new QuestData() { Quest = _questPicker.CurrentQuest, PlayerData = _playerData });
     }
 }
