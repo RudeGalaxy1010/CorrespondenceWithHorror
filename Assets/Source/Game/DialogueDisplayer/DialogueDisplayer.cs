@@ -27,8 +27,13 @@ public class DialogueDisplayer : IInitable
     public void DisplayQuestion(int questionNumber)
     {
         _currentQuestion = _quest.Questions.First(q => q.Number == questionNumber);
-        Message message = UnityEngine.Object.Instantiate(_emitter.BotMessagePrefab, _emitter.Container);
-        message.Display(_currentQuestion.Text);
+        
+        if (string.IsNullOrEmpty(_currentQuestion.Text) == false)
+        {
+            Message message = UnityEngine.Object.Instantiate(_emitter.BotMessagePrefab, _emitter.Container);
+            message.Display(_currentQuestion.Text);
+        }
+
         QuestionChanged?.Invoke(_currentQuestion);
     }
 
