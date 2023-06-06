@@ -19,7 +19,7 @@ public class MenuStarter : Starter
 
         RatingDisplayer ratingDisplayer = new RatingDisplayer(gameData, playerData, _ratingDisplayerEmitter);
         QuestPicker questPicker = Register(new QuestPicker(gameData, questsPreview, _questPickPanelEmitter));
-        QuestLoader questLoader = Register(new QuestLoader(playerData, questPicker, _questLoaderEmitter));
+        QuestLoader questLoader = Register(new QuestLoader(gameData, playerData, questPicker, _questLoaderEmitter));
         QuestLocker questLocker = Register(new QuestLocker(playerData, questPicker, _questLoaderEmitter));
     }
 
