@@ -1,3 +1,4 @@
+using IJunior.TypedScenes;
 using System;
 using TMPro;
 using UnityEngine;
@@ -15,11 +16,13 @@ public class EndGamePanel : MonoBehaviour
     [SerializeField] private Button _againButton;
     [SerializeField] private Button _homeButton;
 
+    private SceneLoader _sceneLoader;
     private EndGame _endGame;
     private RewardCalculator _rewardCalculator;
 
-    public void Construct(EndGame endGame, RewardCalculator rewardCalculator)
+    public void Construct(SceneLoader sceneLoader, EndGame endGame, RewardCalculator rewardCalculator)
     {
+        _sceneLoader = sceneLoader;
         _endGame = endGame;
         _rewardCalculator = rewardCalculator;
         _endGame.GameEnded += OnGameEnded;
@@ -71,6 +74,7 @@ public class EndGamePanel : MonoBehaviour
         _victoryEmoji.SetActive(true);
         _defeatEmoji.SetActive(false);
         _againButton.gameObject.SetActive(true);
+        _nextButton.gameObject.SetActive(true);
     }
 
     private void RenderDefeatUI()
@@ -78,6 +82,7 @@ public class EndGamePanel : MonoBehaviour
         _victoryEmoji.SetActive(false);
         _defeatEmoji.SetActive(true);
         _againButton.gameObject.SetActive(false);
+        _nextButton.gameObject.SetActive(false);
     }
 
     private void OnAdsButtonClicked()
@@ -89,16 +94,16 @@ public class EndGamePanel : MonoBehaviour
 
     private void OnNextButtonClicked()
     {
-        throw new NotImplementedException();
+        _sceneLoader.LoadNextQuest();
     }
 
     private void OnAgainButtonClicked()
     {
-        throw new NotImplementedException();
+        _sceneLoader.ReloadQuest();
     }
 
     private void OnHomeButtonClicked()
     {
-        throw new NotImplementedException();
+        _sceneLoader.LoadMenu();
     }
 }

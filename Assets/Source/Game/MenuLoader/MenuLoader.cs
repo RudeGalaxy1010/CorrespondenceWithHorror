@@ -1,11 +1,11 @@
-using IJunior.TypedScenes;
-
 public class MenuLoader : IInitable, IDeinitable
 {
+    private SceneLoader _sceneLoader;
     private MenuLoaderEmitter _emitter;
 
-    public MenuLoader(MenuLoaderEmitter emitter)
+    public MenuLoader(SceneLoader sceneLoader, MenuLoaderEmitter emitter)
     {
+        _sceneLoader = sceneLoader;
         _emitter = emitter;
     }
 
@@ -21,6 +21,6 @@ public class MenuLoader : IInitable, IDeinitable
 
     private void OnBackButtonClicked()
     {
-        MenuScene.Load();
+        _sceneLoader.LoadMenu();
     }
 }

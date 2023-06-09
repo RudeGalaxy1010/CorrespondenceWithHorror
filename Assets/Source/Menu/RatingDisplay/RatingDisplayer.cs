@@ -1,7 +1,6 @@
 public class RatingDisplayer
 {
     private const string DefaultRating = "-";
-    private const int LevelsPerRatingPoint = 3;
 
     private GameData _gameData;
     private PlayerData _playerData;
@@ -18,11 +17,6 @@ public class RatingDisplayer
     private void UpdateRating()
     {
         _emitter.RatingText.text = _gameData.Ratings.Length > 0 ? 
-            _gameData.Ratings[GetCurrentRatingIndex()] : DefaultRating;
-    }
-
-    private int GetCurrentRatingIndex()
-    {
-        return _playerData.Level / LevelsPerRatingPoint;
+            _gameData.Ratings[_playerData.Rating] : DefaultRating;
     }
 }

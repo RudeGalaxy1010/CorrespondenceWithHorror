@@ -8,29 +8,30 @@ public class GameStarter : Starter, ISceneLoadHandler<QuestLevelData>
     [SerializeField] private MenuLoaderEmitter _menuLoaderEmitter;
     [SerializeField] private EndGamePanel _endGamePanel;
 
-    private Quest _quest;
-    private PlayerData _playerData;
+    private QuestLevelData _questLevelData;
 
     public void OnSceneLoaded(QuestLevelData questData)
     {
-        _quest = questData.Quest;
-        _playerData = questData.PlayerData;
+        _questLevelData = questData;
     }
 
     protected override void OnStart()
     {
-        if (_quest == null)
+        if (_questLevelData.Quest == null)
         {
             Debug.LogError("Failed to load quest");
             return;
         }
 
-        DialogueDisplayer dialogueDisplayer = Register(new DialogueDisplayer(_quest, _dialogueDisplayerEmitter));
+        SceneLoader sceneLoader = new SceneLoader(_questLevelData);
+        DialogueDisplayer dialogueDisplayer = Register(
+            new DialogueDisplayer(_questLevelData.Quest, _dialogueDisplayerEmitter));
         AnswerPicker answerPicker = Register(new AnswerPicker(dialogueDisplayer, _answerPickerEmitter));
         EndGame endGame = Register(new EndGame(dialogueDisplayer));
-        MenuLoader menuLoader = Register(new MenuLoader(_menuLoaderEmitter));
-        ResultSaver resultSaver = Register(new ResultSaver(_playerData, _quest, endGame, new SaveLoad()));
-        RewardCalculator rewardCalculator = new RewardCalculator(_quest);
-        _endGamePanel.Construct(endGame, rewardCalculator);
+        MenuLoader menuLoader = Register(new MenuLoader(sceneLoader, _menuLoaderEmitter));
+        ResultSaver resultSaver = Register(
+            new ResultSaver(_questLevelData, endGame, new SaveLoad()));
+        RewardCalculator rewardCalculator = new RewardCalculator(_questLevelData.Quest);
+        _endGamePanel.Construct(sceneLoader, endGame, rewardCalculator);
     }
 }

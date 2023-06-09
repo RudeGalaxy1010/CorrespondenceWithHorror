@@ -2,14 +2,16 @@ using IJunior.TypedScenes;
 
 public class QuestLoader : IInitable, IDeinitable
 {
+    private SceneLoader _sceneLoader;
     private GameData _gameData;
     private PlayerData _playerData;
     private QuestPicker _questPicker;
     private QuestLoaderEmitter _questLoaderEmitter;
 
-    public QuestLoader(GameData gameData, PlayerData playerData, QuestPicker questPicker, 
+    public QuestLoader(SceneLoader sceneLoader, GameData gameData, PlayerData playerData, QuestPicker questPicker, 
         QuestLoaderEmitter questLoaderEmitter)
     {
+        _sceneLoader = sceneLoader;
         _gameData = gameData;
         _playerData = playerData;
         _questPicker = questPicker;
@@ -28,12 +30,12 @@ public class QuestLoader : IInitable, IDeinitable
 
     private void OnLoadButtonClicked()
     {
-        GameScene.Load(
-            new QuestLevelData() 
-            { 
-                GameData = _gameData,
-                Quest = _questPicker.CurrentQuest, 
-                PlayerData = _playerData 
-            });
+        var questLevelData = new QuestLevelData()
+        {
+            GameData = _gameData,
+            Quest = _questPicker.CurrentQuest,
+            PlayerData = _playerData
+        };
+        _sceneLoader.LoadQuest(questLevelData);
     }
 }

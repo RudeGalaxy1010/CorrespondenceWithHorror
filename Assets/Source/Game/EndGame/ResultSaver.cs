@@ -1,16 +1,17 @@
+using System;
+using System.Linq;
+
 public class ResultSaver : IInitable, IDeinitable
 {
     private const int QuestsForLevelUp = 3;
 
+    private QuestLevelData _questLevelData;
     private EndGame _endGame;
-    private PlayerData _playerData;
     private SaveLoad _saveLoad;
-    private Quest _quest;
 
-    public ResultSaver(PlayerData playerData, Quest quest, EndGame endGame, SaveLoad saveLoad)
+    public ResultSaver(QuestLevelData questLevelData, EndGame endGame, SaveLoad saveLoad)
     {
-        _playerData = playerData;
-        _quest = quest;
+        _questLevelData = questLevelData;   
         _endGame = endGame;
         _saveLoad = saveLoad;
     }
@@ -25,7 +26,7 @@ public class ResultSaver : IInitable, IDeinitable
         _endGame.GameEnded -= OnGameEnded;
     }
 
-    public bool NeedUpdateLevel => _playerData.PlayedQuestsCount % QuestsForLevelUp == 0;
+    public bool NeedUpdateLevel => _questLevelData.PlayerData.PlayedQuestsCount % QuestsForLevelUp == 0;
 
     private void OnGameEnded(GameResult result)
     {
@@ -34,14 +35,21 @@ public class ResultSaver : IInitable, IDeinitable
             return;
         }
 
-        _playerData.LastOpenedQuestId = _quest.Id;
-        _playerData.PlayedQuestsCount++;
+        PlayerData playerData = _questLevelData.PlayerData;
+        playerData.LastOpenedQuestId = GetNextQuestId(_questLevelData.Quest);
+        playerData.PlayedQuestsCount++;
 
         if (NeedUpdateLevel == true)
         {
-            _playerData.Level++;
+            playerData.Rating++;
         }
 
-        _saveLoad.SavePlayerData(_playerData);
+        _saveLoad.SavePlayerData(playerData);
+    }
+
+    private int GetNextQuestId(Quest quest)
+    {
+        Quest nextQuest = _questLevelData.GameData.Quests.FirstOrDefault(q => q.Id > quest.Id);
+        return nextQuest != null ? nextQuest.Id : quest.Id;
     }
 }
