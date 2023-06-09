@@ -16,7 +16,13 @@ public class RatingDisplayer
 
     private void UpdateRating()
     {
-        _emitter.RatingText.text = _gameData.Ratings.Length > 0 ? 
-            _gameData.Ratings[_playerData.Rating] : DefaultRating;
+        if (_gameData.Ratings == null || _gameData.Ratings.Length == 0)
+        {
+            _emitter.RatingText.text = DefaultRating;
+            return;
+        }
+
+        _emitter.RatingText.text = _playerData.Rating < _gameData.Ratings.Length ? 
+            _gameData.Ratings[_playerData.Rating] : _gameData.Ratings[_gameData.Ratings.Length - 1];
     }
 }
