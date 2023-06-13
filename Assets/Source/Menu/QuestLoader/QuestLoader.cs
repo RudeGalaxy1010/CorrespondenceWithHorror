@@ -1,5 +1,3 @@
-using IJunior.TypedScenes;
-
 public class QuestLoader : IInitable, IDeinitable
 {
     private SceneLoader _sceneLoader;
@@ -8,7 +6,7 @@ public class QuestLoader : IInitable, IDeinitable
     private QuestPicker _questPicker;
     private QuestLoaderEmitter _questLoaderEmitter;
 
-    public QuestLoader(SceneLoader sceneLoader, GameData gameData, PlayerData playerData, QuestPicker questPicker, 
+    public QuestLoader(SceneLoader sceneLoader, GameData gameData, PlayerData playerData, QuestPicker questPicker,
         QuestLoaderEmitter questLoaderEmitter)
     {
         _sceneLoader = sceneLoader;

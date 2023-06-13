@@ -77,6 +77,6 @@ public class QuestPicker : IInitable, IDeinitable
 
     private void UpdateAvatar()
     {
-        _emitter.AvatarImage.sprite = _questsPreview.FirstOrDefault(s => s != null && s.name == CurrentQuest.Name);
+        _emitter.AvatarImage.sprite = _questsPreview.FirstOrDefault(s => s != null && s.name == CurrentQuest.PreviewPath);
     }
 }

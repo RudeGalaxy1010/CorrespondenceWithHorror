@@ -27,8 +27,8 @@ public class MenuStarter : Starter
     private GameData LoadGameData(string lang)
     {
         string fullPath = $"{QuestsNamesPath}_{lang}";
-        TextAsset questsNamesText = Resources.Load<TextAsset>(fullPath);
-        return JsonUtility.FromJson<GameData>(questsNamesText.text);
+        TextAsset gameDataRaw = Resources.Load<TextAsset>(fullPath);
+        return JsonUtility.FromJson<GameData>(gameDataRaw.text);
     }
 
     private PlayerData LoadPlayerData()
