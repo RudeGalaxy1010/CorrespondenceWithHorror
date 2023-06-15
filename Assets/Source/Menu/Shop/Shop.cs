@@ -127,9 +127,9 @@ public class Shop : IInitable, IDeinitable
     {
         CostType costType = GetCostType(_selectedItem);
 
-        if (costType == CostType.Money)
+        if (costType == CostType.Money && _balance.TrySubtractMoney(_selectedItem.Cost) == false)
         {
-            // TOOD: subtract money
+            return;
         }
         else if (costType == CostType.Ad)
         {
