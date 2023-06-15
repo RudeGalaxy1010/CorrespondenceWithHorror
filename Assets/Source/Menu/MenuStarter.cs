@@ -12,10 +12,13 @@ public class MenuStarter : Starter
     [SerializeField] private AvatarDisplayerEmitter _avatarDisplayerEmitter;
     [SerializeField] private ShopEmitter _shopEmitter;
 
+    private SaveLoad _saveLoad;
+
     protected override void OnStart()
     {
         string lang = "ru"; // TODO: Get from localization
 
+        _saveLoad = new SaveLoad();
         GameData gameData = LoadGameData(lang);
         PlayerData playerData = LoadPlayerData();
         Sprite[] avatars = LoadAvatars();
@@ -27,7 +30,7 @@ public class MenuStarter : Starter
         QuestLoader questLoader = Register(new QuestLoader(sceneLoader, gameData, playerData, questPicker, 
             _questLoaderEmitter));
         QuestLocker questLocker = Register(new QuestLocker(playerData, questPicker, _questLoaderEmitter));
-        Shop shop = Register(new Shop(playerData, avatars, _shopEmitter));
+        Shop shop = Register(new Shop(playerData, _saveLoad, avatars, _shopEmitter));
         AvatarDisplayer avatarDisplayer = Register(new AvatarDisplayer(playerData, avatars, shop, 
             _avatarDisplayerEmitter));
     }
@@ -41,11 +44,9 @@ public class MenuStarter : Starter
 
     private PlayerData LoadPlayerData()
     {
-        SaveLoad saveLoad = new SaveLoad();
-
-        if (saveLoad.HasSave == true)
+        if (_saveLoad.HasSave == true)
         {
-            return saveLoad.LoadPLayerData();
+            return _saveLoad.LoadPLayerData();
         }
 
         return new PlayerData();

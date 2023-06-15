@@ -28,11 +28,7 @@ public class ShopItem : MonoBehaviour
         _previewImage.sprite = preview;
         _cost = cost;
         _isPurchased = isPurchased;
-
-        if (isPurchased == true)
-        {
-            _previewImage.gameObject.SetActive(true);
-        }
+        _previewImage.gameObject.SetActive(isPurchased);
     }
 
     public bool IsPurchased => _isPurchased;

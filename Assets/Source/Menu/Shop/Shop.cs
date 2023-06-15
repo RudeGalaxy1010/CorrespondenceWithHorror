@@ -8,6 +8,7 @@ public class Shop : IInitable, IDeinitable
 {
     private const int CostMultiplier = 100;
     private const int AdItemsOrderNumber = 3;
+    private const string OpenedAvatarsText = "Открыто";
 
     public event Action AvatarUpdated;
 
@@ -19,9 +20,9 @@ public class Shop : IInitable, IDeinitable
     private List<ShopItem> _items;
     private ShopItem _selectedItem;
 
-    public Shop(PlayerData playerData, Sprite[] avatars, ShopEmitter emitter)
+    public Shop(PlayerData playerData, SaveLoad saveLoad, Sprite[] avatars, ShopEmitter emitter)
     {
-        _saveLoad = new SaveLoad();
+        _saveLoad = saveLoad;
         _playerData = playerData;
         _avatars = avatars;
         _emitter = emitter;
@@ -59,6 +60,7 @@ public class Shop : IInitable, IDeinitable
     {
         ClearItems();
         CreateItems();
+        _emitter.OpenedAvatarsText.text = $"{OpenedAvatarsText} {_playerData.OpenedAvatarIds.Length}/{_avatars.Length}";
     }
 
     private void ClearItems()
