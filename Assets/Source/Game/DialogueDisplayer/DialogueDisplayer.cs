@@ -6,6 +6,9 @@ using UnityEngine;
 public class DialogueDisplayer : IInitable
 {
     private const int StartQuestion = 0;
+    private const float NextQuestionDelay = 1f;
+    private const float UpdateFocusDelay = 0.1f;
+    private const float EndGameDelay = 4f;
 
     public event Action<Question> QuestionChanged;
 
@@ -23,6 +26,8 @@ public class DialogueDisplayer : IInitable
 
     public Question CurrentQuestion => _currentQuestion;
     private bool IsFirstQuestion => _currentQuestion.Number == StartQuestion;
+    private bool IsLastQuestion => _currentQuestion.Type == QuestionType.Victory 
+        || _currentQuestion.Type == QuestionType.Defeat;
 
     public void Init()
     {
@@ -40,16 +45,10 @@ public class DialogueDisplayer : IInitable
             return;
         }
 
-        if (string.IsNullOrEmpty(_currentQuestion.Text) == true)
-        {
-            QuestionChanged?.Invoke(_currentQuestion);
-            return;
-        }
-
-        _emitter.StartCoroutine(DisplayQuestionWithDelay());
+        _emitter.StartCoroutine(DisplayQuestionWithDelay(IsLastQuestion));
     }
 
-    private void FocusMessage(RectTransform message)
+    private void FocusOnLastMessage()
     {
         _emitter.ScrollRect.normalizedPosition = new Vector2(_emitter.ScrollRect.normalizedPosition.x, 0);
     }
@@ -59,27 +58,32 @@ public class DialogueDisplayer : IInitable
         _emitter.StartCoroutine(DisplayAnswerWithDelay(answer));
     }
 
-    private IEnumerator DisplayQuestionWithDelay()
+    private IEnumerator DisplayQuestionWithDelay(bool isLastQuestion = false)
     {
-        yield return new WaitForSeconds(1f);
-        Message message = DisplayMessage(_emitter.BotMessagePrefab, _currentQuestion.Text);
-        yield return new WaitForSeconds(0.1f);
-        FocusMessage(message.GetComponent<RectTransform>());
+        yield return new WaitForSeconds(NextQuestionDelay);
+        DisplayMessage(_emitter.BotMessagePrefab, _currentQuestion.Text);
+        yield return new WaitForSeconds(UpdateFocusDelay);
+        FocusOnLastMessage();
+
+        if (isLastQuestion == true)
+        {
+            yield return new WaitForSeconds(EndGameDelay);
+        }
+
         QuestionChanged?.Invoke(_currentQuestion);
     }
 
     private IEnumerator DisplayAnswerWithDelay(string answer)
     {
-        Message message = DisplayMessage(_emitter.PlayerMessagePrefab, answer);
-        yield return new WaitForSeconds(0.1f);
-        FocusMessage(message.GetComponent<RectTransform>());
+        DisplayMessage(_emitter.PlayerMessagePrefab, answer);
+        yield return new WaitForSeconds(UpdateFocusDelay);
+        FocusOnLastMessage();
     }
 
-    private Message DisplayMessage(Message prefab, string text)
+    private void DisplayMessage(Message prefab, string text)
     {
         Message message = UnityEngine.Object.Instantiate(prefab, _emitter.Container);
         message.Display(text);
         _soundPlayer.PlayMessageSound();
-        return message;
     }
 }
