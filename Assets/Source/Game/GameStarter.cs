@@ -1,7 +1,7 @@
 using IJunior.TypedScenes;
 using UnityEngine;
 
-public class GameStarter : Starter, ISceneLoadHandler<QuestLevelData>
+public class GameStarter : Starter, ISceneLoadHandler<LevelData>
 {
     [SerializeField] private DialogueDisplayerEmitter _dialogueDisplayerEmitter;
     [SerializeField] private AnswerPickerEmitter _answerPickerEmitter;
@@ -9,33 +9,33 @@ public class GameStarter : Starter, ISceneLoadHandler<QuestLevelData>
     [SerializeField] private EndGamePanel _endGamePanel;
     [SerializeField] private SoundPlayerEmitter _soundPlayerEmitter;
 
-    private QuestLevelData _questLevelData;
+    private LevelData _levelData;
     private SaveLoad _saveLoad;
 
-    public void OnSceneLoaded(QuestLevelData questData)
+    public void OnSceneLoaded(LevelData questData)
     {
-        _questLevelData = questData;
+        _levelData = questData;
     }
 
     protected override void OnStart()
     {
-        if (_questLevelData.Quest == null)
+        if (_levelData.Quest == null)
         {
             Debug.LogError("Failed to load quest");
             return;
         }
 
         _saveLoad = new SaveLoad();
-        SceneLoader sceneLoader = new SceneLoader(_questLevelData);
+        SceneLoader sceneLoader = new SceneLoader(_levelData);
         SoundPlayer soundPlayer = new SoundPlayer(_soundPlayerEmitter);
-        DialogueDisplayer dialogueDisplayer = Register(
-            new DialogueDisplayer(_questLevelData.Quest, soundPlayer, _dialogueDisplayerEmitter));
+        DialogueDisplayer dialogueDisplayer = Register(new DialogueDisplayer(_levelData.Quest, _levelData.HeroAvatar, 
+            _levelData.PlayerAvatar, soundPlayer, _dialogueDisplayerEmitter));
         AnswerPicker answerPicker = Register(new AnswerPicker(dialogueDisplayer, _answerPickerEmitter));
         EndGame endGame = Register(new EndGame(dialogueDisplayer));
         MenuLoader menuLoader = Register(new MenuLoader(sceneLoader, _menuLoaderEmitter));
         ResultSaver resultSaver = Register(
-            new ResultSaver(_questLevelData, _saveLoad, endGame, _endGamePanel));
-        RewardCalculator rewardCalculator = new RewardCalculator(_questLevelData.Quest);
+            new ResultSaver(_levelData, _saveLoad, endGame, _endGamePanel));
+        RewardCalculator rewardCalculator = new RewardCalculator(_levelData.Quest);
         _endGamePanel.Construct(sceneLoader, endGame, rewardCalculator);
     }
 }

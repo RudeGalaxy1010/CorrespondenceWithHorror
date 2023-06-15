@@ -29,14 +29,14 @@ public class MenuStarter : Starter
         RatingDisplayer ratingDisplayer = new RatingDisplayer(gameData, playerData, _ratingDisplayerEmitter);
         SceneLoader sceneLoader = Register(new SceneLoader());
         QuestPicker questPicker = Register(new QuestPicker(gameData, questsPreview, _questPickPanelEmitter));
-        QuestLoader questLoader = Register(new QuestLoader(sceneLoader, gameData, playerData, questPicker, 
-            _questLoaderEmitter));
         //QuestLocker questLocker = Register(new QuestLocker(playerData, questPicker, _questLoaderEmitter));
         Balance balance = Register(new Balance(playerData, _saveLoad, _balanceEmitter));
         BalanceDisplayer balanceDisplayer = Register(new BalanceDisplayer(balance, _balanceDisplayerEmitter));
         Shop shop = Register(new Shop(playerData, _saveLoad, balance, avatars, _shopEmitter));
         AvatarDisplayer avatarDisplayer = Register(new AvatarDisplayer(playerData, avatars, shop, 
             _avatarDisplayerEmitter));
+        QuestLoader questLoader = Register(new QuestLoader(sceneLoader, gameData, playerData, questPicker,
+            avatarDisplayer, _questLoaderEmitter));
     }
 
     private GameData LoadGameData(string lang)

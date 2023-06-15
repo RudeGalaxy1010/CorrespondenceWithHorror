@@ -6,11 +6,11 @@ public class SceneLoader
 {
     private const string QuestLevelDataNotSetExceptionMessage = "Quest level data has to be set first!";
 
-    private QuestLevelData _questLevelData;
+    private LevelData _levelData;
 
-    public SceneLoader(QuestLevelData questLevelData = null)
+    public SceneLoader(LevelData questLevelData = null)
     {
-        _questLevelData = questLevelData;
+        _levelData = questLevelData;
     }
 
     public void LoadMenu()
@@ -18,36 +18,36 @@ public class SceneLoader
         MenuScene.Load();
     }
 
-    public void LoadQuest(QuestLevelData questLevelData)
+    public void LoadQuest(LevelData questLevelData)
     {
         GameScene.Load(questLevelData);
     }
 
     public void LoadNextQuest()
     {
-        if (_questLevelData == null)
+        if (_levelData == null)
         {
             throw new Exception(QuestLevelDataNotSetExceptionMessage);
         }
 
-        _questLevelData.Quest = GetNextQuest();
-        LoadQuest(_questLevelData);
+        _levelData.Quest = GetNextQuest();
+        LoadQuest(_levelData);
     }
 
     public void ReloadQuest()
     {
-        if (_questLevelData == null)
+        if (_levelData == null)
         {
             throw new Exception(QuestLevelDataNotSetExceptionMessage);
         }
 
-        LoadQuest(_questLevelData);
+        LoadQuest(_levelData);
     }
 
     private Quest GetNextQuest()
     {
-        GameData gameData = _questLevelData.GameData;
-        int currentQuestId = _questLevelData.Quest.Id;
+        GameData gameData = _levelData.GameData;
+        int currentQuestId = _levelData.Quest.Id;
         int lastQuestId = gameData.Quests.Max(q => q.Id);
 
         if (currentQuestId == lastQuestId)

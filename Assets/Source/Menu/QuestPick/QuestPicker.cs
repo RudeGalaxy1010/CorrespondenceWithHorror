@@ -25,6 +25,7 @@ public class QuestPicker : IInitable, IDeinitable
 
     public Quest CurrentQuest => _gameData.Quests != null || _gameData.Quests.Length > 0 ?
         _gameData.Quests[_currentQuestPointer] : null;
+    public Sprite CurrentHeroAvatar => _emitter.AvatarImage.sprite;
 
     public void Init()
     {

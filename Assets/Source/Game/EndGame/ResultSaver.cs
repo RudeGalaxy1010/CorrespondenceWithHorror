@@ -5,7 +5,7 @@ public class ResultSaver : IInitable, IDeinitable
 {
     private const int QuestsForLevelUp = 3;
 
-    private QuestLevelData _questLevelData;
+    private LevelData _questLevelData;
     private SaveLoad _saveLoad;
     private EndGame _endGame;
     private EndGamePanel _endGamePanel;
@@ -15,7 +15,7 @@ public class ResultSaver : IInitable, IDeinitable
     private int _rating;
     private int _reward;
 
-    public ResultSaver(QuestLevelData questLevelData, SaveLoad saveLoad, EndGame endGame, EndGamePanel endGamePanel)
+    public ResultSaver(LevelData questLevelData, SaveLoad saveLoad, EndGame endGame, EndGamePanel endGamePanel)
     {
         _questLevelData = questLevelData;
         _saveLoad = saveLoad;

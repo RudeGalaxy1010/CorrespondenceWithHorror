@@ -13,15 +13,20 @@ public class DialogueDisplayer : IInitable
     public event Action<Question> QuestionChanged;
 
     private Quest _quest;
-    private DialogueDisplayerEmitter _emitter;
     private SoundPlayer _soundPlayer;
+    private Sprite _heroAvatar;
+    private Sprite _playerAvatar;
+    private DialogueDisplayerEmitter _emitter;
     private Question _currentQuestion;
 
-    public DialogueDisplayer(Quest quest, SoundPlayer soundPlayer, DialogueDisplayerEmitter emitter)
+    public DialogueDisplayer(Quest quest, Sprite heroAvatar, Sprite playerAvatar, SoundPlayer soundPlayer, 
+        DialogueDisplayerEmitter emitter)
     {
         _quest = quest;
-        _emitter = emitter;
         _soundPlayer = soundPlayer;
+        _heroAvatar = heroAvatar;
+        _playerAvatar = playerAvatar;
+        _emitter = emitter;
     }
 
     public Question CurrentQuestion => _currentQuestion;
@@ -31,6 +36,8 @@ public class DialogueDisplayer : IInitable
 
     public void Init()
     {
+        _emitter.HeroAvatarImage.sprite = _heroAvatar;
+        _emitter.HeroNameText.text = _quest.HeroName;
         DisplayQuestion(StartQuestion);
     }
 

@@ -18,6 +18,8 @@ public class AvatarDisplayer : IInitable, IDeinitable
         UpdateAvatar();
     }
 
+    public Sprite CurrentAvatar => _emitter.AvatarImage.sprite;
+
     public void Init()
     {
         _shop.AvatarUpdated += OnAvatarUpdated;
