@@ -7,6 +7,8 @@ public class PlayerData
     public int LastOpenedQuestId;
     public int Money;
     public int PlayedQuestsCount;
+    public int CurrentAvatarId;
+    public int[] OpenedAvatarIds;
 
     public PlayerData()
     {
@@ -14,5 +16,7 @@ public class PlayerData
         LastOpenedQuestId = 0;
         Money = 0;
         PlayedQuestsCount = 0;
+        CurrentAvatarId = 0;
+        OpenedAvatarIds = new int[] { 0 };
     }
 }

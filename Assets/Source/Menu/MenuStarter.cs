@@ -3,11 +3,14 @@ using UnityEngine;
 public class MenuStarter : Starter
 {
     private const string QuestsNamesPath = "GameData";
+    private const string AvatarsPath = "AvatarsAtlas";
     private const string QuestsPreviewPath = "HeroesAtlas";
 
     [SerializeField] private QuestPickerEmitter _questPickPanelEmitter;
     [SerializeField] private RatingDisplayerEmitter _ratingDisplayerEmitter;
     [SerializeField] private QuestLoaderEmitter _questLoaderEmitter;
+    [SerializeField] private AvatarDisplayerEmitter _avatarDisplayerEmitter;
+    [SerializeField] private ShopEmitter _shopEmitter;
 
     protected override void OnStart()
     {
@@ -15,13 +18,18 @@ public class MenuStarter : Starter
 
         GameData gameData = LoadGameData(lang);
         PlayerData playerData = LoadPlayerData();
+        Sprite[] avatars = LoadAvatars();
         Sprite[] questsPreview = LoadQuestsPreview();
 
         RatingDisplayer ratingDisplayer = new RatingDisplayer(gameData, playerData, _ratingDisplayerEmitter);
         SceneLoader sceneLoader = Register(new SceneLoader());
         QuestPicker questPicker = Register(new QuestPicker(gameData, questsPreview, _questPickPanelEmitter));
-        QuestLoader questLoader = Register(new QuestLoader(sceneLoader, gameData, playerData, questPicker, _questLoaderEmitter));
+        QuestLoader questLoader = Register(new QuestLoader(sceneLoader, gameData, playerData, questPicker, 
+            _questLoaderEmitter));
         QuestLocker questLocker = Register(new QuestLocker(playerData, questPicker, _questLoaderEmitter));
+        Shop shop = Register(new Shop(playerData, avatars, _shopEmitter));
+        AvatarDisplayer avatarDisplayer = Register(new AvatarDisplayer(playerData, avatars, shop, 
+            _avatarDisplayerEmitter));
     }
 
     private GameData LoadGameData(string lang)
@@ -41,6 +49,11 @@ public class MenuStarter : Starter
         }
 
         return new PlayerData();
+    }
+
+    private Sprite[] LoadAvatars()
+    {
+        return Resources.LoadAll<Sprite>(AvatarsPath);
     }
 
     private Sprite[] LoadQuestsPreview()
