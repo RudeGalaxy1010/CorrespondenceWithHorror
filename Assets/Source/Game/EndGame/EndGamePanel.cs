@@ -92,7 +92,7 @@ public class EndGamePanel : MonoBehaviour
     {
         _victoryEmoji.SetActive(false);
         _defeatEmoji.SetActive(true);
-        _againButton.gameObject.SetActive(false);
+        _againButton.gameObject.SetActive(true);
         _nextButton.gameObject.SetActive(false);
     }
 

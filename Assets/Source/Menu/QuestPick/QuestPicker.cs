@@ -5,6 +5,7 @@ using UnityEngine;
 public class QuestPicker : IInitable, IDeinitable
 {
     private const string DefaultQuestName = "-";
+    private const string DefaultTask = "-";
 
     public event Action<Quest> QuestUpdated;
 
@@ -19,8 +20,7 @@ public class QuestPicker : IInitable, IDeinitable
         _questsPreview = questsPreview;
         _emitter = emitter;
         _currentQuestPointer = 0;
-        UpdateQuestName();
-        UpdateAvatar();
+        Update();
     }
 
     public Quest CurrentQuest => _gameData.Quests != null || _gameData.Quests.Length > 0 ?
@@ -66,6 +66,7 @@ public class QuestPicker : IInitable, IDeinitable
     {
         UpdateQuestName();
         UpdateAvatar();
+        UpdateTask();
         QuestUpdated?.Invoke(CurrentQuest);
     }
 
@@ -78,5 +79,11 @@ public class QuestPicker : IInitable, IDeinitable
     private void UpdateAvatar()
     {
         _emitter.AvatarImage.sprite = _questsPreview.FirstOrDefault(s => s != null && s.name == CurrentQuest.PreviewPath);
+    }
+
+    private void UpdateTask()
+    {
+        _emitter.TaskText.text = _gameData.Quests.Length > 0 ?
+            _gameData.Quests[_currentQuestPointer].Task : DefaultTask;
     }
 }

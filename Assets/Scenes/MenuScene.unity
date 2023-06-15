@@ -624,6 +624,7 @@ MonoBehaviour:
   PreviousQuestButton: {fileID: 619953096}
   QuestNameText: {fileID: 273081017}
   AvatarImage: {fileID: 687084584}
+  TaskText: {fileID: 1119516133}
 --- !u!114 &213787888
 MonoBehaviour:
   m_ObjectHideFlags: 0

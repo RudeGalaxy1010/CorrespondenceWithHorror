@@ -8,4 +8,5 @@ public class QuestPickerEmitter : MonoBehaviour
     public Button PreviousQuestButton;
     public TMP_Text QuestNameText;
     public Image AvatarImage;
+    public TMP_Text TaskText;
 }
