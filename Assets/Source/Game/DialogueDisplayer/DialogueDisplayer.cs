@@ -47,7 +47,7 @@ public class DialogueDisplayer : IInitable
 
         if (IsFirstQuestion == true)
         {
-            DisplayMessage(_emitter.BotMessagePrefab, _currentQuestion.Text);
+            DisplayMessage(_emitter.BotMessagePrefab, _heroAvatar, _currentQuestion.Text);
             QuestionChanged?.Invoke(_currentQuestion);
             return;
         }
@@ -68,7 +68,7 @@ public class DialogueDisplayer : IInitable
     private IEnumerator DisplayQuestionWithDelay(bool isLastQuestion = false)
     {
         yield return new WaitForSeconds(NextQuestionDelay);
-        DisplayMessage(_emitter.BotMessagePrefab, _currentQuestion.Text);
+        DisplayMessage(_emitter.BotMessagePrefab, _heroAvatar, _currentQuestion.Text);
         yield return new WaitForSeconds(UpdateFocusDelay);
         FocusOnLastMessage();
 
@@ -82,15 +82,15 @@ public class DialogueDisplayer : IInitable
 
     private IEnumerator DisplayAnswerWithDelay(string answer)
     {
-        DisplayMessage(_emitter.PlayerMessagePrefab, answer);
+        DisplayMessage(_emitter.PlayerMessagePrefab, _playerAvatar, answer);
         yield return new WaitForSeconds(UpdateFocusDelay);
         FocusOnLastMessage();
     }
 
-    private void DisplayMessage(Message prefab, string text)
+    private void DisplayMessage(Message prefab, Sprite avatar, string text)
     {
         Message message = UnityEngine.Object.Instantiate(prefab, _emitter.Container);
-        message.Display(text);
+        message.Display(avatar, text);
         _soundPlayer.PlayMessageSound();
     }
 }
