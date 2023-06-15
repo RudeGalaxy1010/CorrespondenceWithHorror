@@ -11,12 +11,14 @@ public class DialogueDisplayer : IInitable
 
     private Quest _quest;
     private DialogueDisplayerEmitter _emitter;
+    private SoundPlayer _soundPlayer;
     private Question _currentQuestion;
 
-    public DialogueDisplayer(Quest quest, DialogueDisplayerEmitter emitter)
+    public DialogueDisplayer(Quest quest, SoundPlayer soundPlayer, DialogueDisplayerEmitter emitter)
     {
         _quest = quest;
         _emitter = emitter;
+        _soundPlayer = soundPlayer;
     }
 
     public Question CurrentQuestion => _currentQuestion;
@@ -77,6 +79,7 @@ public class DialogueDisplayer : IInitable
     {
         Message message = UnityEngine.Object.Instantiate(prefab, _emitter.Container);
         message.Display(text);
+        _soundPlayer.PlayMessageSound();
         return message;
     }
 }
