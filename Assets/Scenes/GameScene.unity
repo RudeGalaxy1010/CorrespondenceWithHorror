@@ -263,6 +263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d7bc769ac6a6404890c66dacedf08c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ScrollRect: {fileID: 478226114}
   Container: {fileID: 1789734572}
   BotMessagePrefab: {fileID: -6633983446629582130, guid: 84ddd5862480de04d9cd03bc7475d98f, type: 3}
   PlayerMessagePrefab: {fileID: 6507100763534023385, guid: 93a32224a682bac4daf2238d16c7193a, type: 3}
@@ -3761,7 +3762,7 @@ MonoBehaviour:
     m_Left: 0
     m_Right: 0
     m_Top: 100
-    m_Bottom: 0
+    m_Bottom: 100
   m_ChildAlignment: 0
   m_Spacing: 200
   m_ChildForceExpandWidth: 1

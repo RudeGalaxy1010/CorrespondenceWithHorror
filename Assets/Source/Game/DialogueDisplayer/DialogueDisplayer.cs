@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using System.Linq;
+using UnityEngine;
 
 public class DialogueDisplayer : IInitable
 {
@@ -11,13 +13,14 @@ public class DialogueDisplayer : IInitable
     private DialogueDisplayerEmitter _emitter;
     private Question _currentQuestion;
 
-    public Question CurrentQuestion => _currentQuestion;
-
     public DialogueDisplayer(Quest quest, DialogueDisplayerEmitter emitter)
     {
         _quest = quest;
         _emitter = emitter;
     }
+
+    public Question CurrentQuestion => _currentQuestion;
+    private bool IsFirstQuestion => _currentQuestion.Number == StartQuestion;
 
     public void Init()
     {
@@ -27,19 +30,53 @@ public class DialogueDisplayer : IInitable
     public void DisplayQuestion(int questionNumber)
     {
         _currentQuestion = _quest.Questions.First(q => q.Number == questionNumber);
-        
-        if (string.IsNullOrEmpty(_currentQuestion.Text) == false)
+
+        if (IsFirstQuestion == true)
         {
-            Message message = UnityEngine.Object.Instantiate(_emitter.BotMessagePrefab, _emitter.Container);
-            message.Display(_currentQuestion.Text);
+            DisplayMessage(_emitter.BotMessagePrefab, _currentQuestion.Text);
+            QuestionChanged?.Invoke(_currentQuestion);
+            return;
         }
 
-        QuestionChanged?.Invoke(_currentQuestion);
+        if (string.IsNullOrEmpty(_currentQuestion.Text) == true)
+        {
+            QuestionChanged?.Invoke(_currentQuestion);
+            return;
+        }
+
+        _emitter.StartCoroutine(DisplayQuestionWithDelay());
+    }
+
+    private void FocusMessage(RectTransform message)
+    {
+        _emitter.ScrollRect.normalizedPosition = new Vector2(_emitter.ScrollRect.normalizedPosition.x, 0);
     }
 
     public void DisplayAnswer(string answer)
     {
-        Message message = UnityEngine.Object.Instantiate(_emitter.PlayerMessagePrefab, _emitter.Container);
-        message.Display(answer);
+        _emitter.StartCoroutine(DisplayAnswerWithDelay(answer));
+    }
+
+    private IEnumerator DisplayQuestionWithDelay()
+    {
+        yield return new WaitForSeconds(1f);
+        Message message = DisplayMessage(_emitter.BotMessagePrefab, _currentQuestion.Text);
+        yield return new WaitForSeconds(0.1f);
+        FocusMessage(message.GetComponent<RectTransform>());
+        QuestionChanged?.Invoke(_currentQuestion);
+    }
+
+    private IEnumerator DisplayAnswerWithDelay(string answer)
+    {
+        Message message = DisplayMessage(_emitter.PlayerMessagePrefab, answer);
+        yield return new WaitForSeconds(0.1f);
+        FocusMessage(message.GetComponent<RectTransform>());
+    }
+
+    private Message DisplayMessage(Message prefab, string text)
+    {
+        Message message = UnityEngine.Object.Instantiate(prefab, _emitter.Container);
+        message.Display(text);
+        return message;
     }
 }

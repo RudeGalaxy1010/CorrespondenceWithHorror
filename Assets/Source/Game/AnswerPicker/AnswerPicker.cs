@@ -45,6 +45,7 @@ public class AnswerPicker : IInitable, IDeinitable
         {
             AnswerButton answerButton = GetOrCreateAnswerButton();
             answerButton.SetAnswer(question.Answers[i]);
+            answerButton.SetInteractable(true);
         }
     }
 
@@ -81,5 +82,10 @@ public class AnswerPicker : IInitable, IDeinitable
     {
         _dialogueDisplayer.DisplayAnswer(answer.Text);
         _dialogueDisplayer.DisplayQuestion(answer.NextQuestionNumber);
+
+        for (int i = 0; i < _answerButtons.Count; i++)
+        {
+            _answerButtons[i].SetInteractable(false);
+        }
     }
 }

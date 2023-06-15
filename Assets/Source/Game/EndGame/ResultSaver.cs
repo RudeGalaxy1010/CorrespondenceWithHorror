@@ -72,7 +72,7 @@ public class ResultSaver : IInitable, IDeinitable
     {
         PlayerData playerData = _questLevelData.PlayerData;
         playerData.PlayedQuestsCount = _playedQuestsCount;
-        playerData.CurrentAvatarId = _lastOpenedQuestId;
+        playerData.LastOpenedQuestId = _lastOpenedQuestId;
         playerData.Rating = _rating;
         playerData.Money += _reward;
         _saveLoad.SavePlayerData(playerData);

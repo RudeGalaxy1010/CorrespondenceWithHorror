@@ -34,6 +34,11 @@ public class AnswerButton : MonoBehaviour
         _text.text = _answer.Text;
     }
 
+    public void SetInteractable(bool isInteractable)
+    {
+        _button.interactable = isInteractable;
+    }
+
     private void OnButtonClicked()
     {
         Clicked?.Invoke(_answer);
