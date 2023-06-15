@@ -32,7 +32,7 @@ public class GameStarter : Starter, ISceneLoadHandler<QuestLevelData>
         EndGame endGame = Register(new EndGame(dialogueDisplayer));
         MenuLoader menuLoader = Register(new MenuLoader(sceneLoader, _menuLoaderEmitter));
         ResultSaver resultSaver = Register(
-            new ResultSaver(_questLevelData, endGame, _saveLoad));
+            new ResultSaver(_questLevelData, _saveLoad, endGame, _endGamePanel));
         RewardCalculator rewardCalculator = new RewardCalculator(_questLevelData.Quest);
         _endGamePanel.Construct(sceneLoader, endGame, rewardCalculator);
     }

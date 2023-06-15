@@ -1,4 +1,3 @@
-using IJunior.TypedScenes;
 using System;
 using TMPro;
 using UnityEngine;
@@ -6,6 +5,9 @@ using UnityEngine.UI;
 
 public class EndGamePanel : MonoBehaviour
 {
+    public event Action<int> RewardChanged;
+    public event Action NeedSave;
+
     [SerializeField] private GameObject _panel;
     [SerializeField] private GameObject _victoryEmoji;
     [SerializeField] private GameObject _defeatEmoji;
@@ -19,6 +21,7 @@ public class EndGamePanel : MonoBehaviour
     private SceneLoader _sceneLoader;
     private EndGame _endGame;
     private RewardCalculator _rewardCalculator;
+    private GameResult _gameResult;
 
     public void Construct(SceneLoader sceneLoader, EndGame endGame, RewardCalculator rewardCalculator)
     {
@@ -54,10 +57,11 @@ public class EndGamePanel : MonoBehaviour
 
     private void OnGameEnded(GameResult result)
     {
-        _resultText.SetFromResult(result);
-        _coinsValueText.text = $"+{_rewardCalculator.GetReward(result)}";
+        _gameResult = result;
+        _resultText.SetFromResult(_gameResult);
+        UpdateReward(_gameResult, false);
 
-        if (result == GameResult.Victory)
+        if (_gameResult == GameResult.Victory)
         {
             RenderVictoryUI();
         }
@@ -67,6 +71,13 @@ public class EndGamePanel : MonoBehaviour
         }
 
         _panel.SetActive(true);
+    }
+
+    private void UpdateReward(GameResult result, bool isAdsShown)
+    {
+        int reward = _rewardCalculator.GetReward(result, isAdsShown);
+        _coinsValueText.text = $"+{reward}";
+        RewardChanged?.Invoke(reward);
     }
 
     private void RenderVictoryUI()
@@ -90,20 +101,24 @@ public class EndGamePanel : MonoBehaviour
         _adsButton.gameObject.SetActive(false);
         Debug.Log("Ads button clicked");
         // TODO: call ads
+        UpdateReward(_gameResult, true);
     }
 
     private void OnNextButtonClicked()
     {
+        NeedSave?.Invoke();
         _sceneLoader.LoadNextQuest();
     }
 
     private void OnAgainButtonClicked()
     {
+        NeedSave?.Invoke();
         _sceneLoader.ReloadQuest();
     }
 
     private void OnHomeButtonClicked()
     {
+        NeedSave?.Invoke();
         _sceneLoader.LoadMenu();
     }
 }

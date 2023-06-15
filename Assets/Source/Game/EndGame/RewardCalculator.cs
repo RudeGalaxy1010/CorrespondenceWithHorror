@@ -10,6 +10,7 @@ public class RewardCalculator
     private const int VictoryRewardUnder20thQuest = 350;
     private const int VictoryRewardOver20thQuest = 500;
     private const int DefeatReward = 50;
+    private const int RewardMultiplier = 2;
 
     private Quest _quest;
 
@@ -18,16 +19,20 @@ public class RewardCalculator
         _quest = quest;
     }
 
-    public int GetReward(GameResult result)
+    public int GetReward(GameResult result, bool needMultiplication = false)
     {
+        int reward;
+
         if (result == GameResult.Victory)
         {
-            return GetVictoryResult();
+            reward = GetVictoryResult();
         }
         else
         {
-            return DefeatReward;
+            reward = DefeatReward;
         }
+
+        return needMultiplication ? reward * RewardMultiplier : reward;
     }
 
     private int GetVictoryResult()
