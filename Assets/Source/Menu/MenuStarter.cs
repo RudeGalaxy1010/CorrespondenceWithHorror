@@ -11,6 +11,8 @@ public class MenuStarter : Starter
     [SerializeField] private QuestLoaderEmitter _questLoaderEmitter;
     [SerializeField] private AvatarDisplayerEmitter _avatarDisplayerEmitter;
     [SerializeField] private ShopEmitter _shopEmitter;
+    [SerializeField] private BalanceEmitter _balanceEmitter;
+    [SerializeField] private BalanceDisplayerEmitter _balanceDisplayerEmitter;
 
     private SaveLoad _saveLoad;
 
@@ -30,7 +32,9 @@ public class MenuStarter : Starter
         QuestLoader questLoader = Register(new QuestLoader(sceneLoader, gameData, playerData, questPicker, 
             _questLoaderEmitter));
         QuestLocker questLocker = Register(new QuestLocker(playerData, questPicker, _questLoaderEmitter));
-        Shop shop = Register(new Shop(playerData, _saveLoad, avatars, _shopEmitter));
+        Balance balance = Register(new Balance(playerData, _saveLoad, _balanceEmitter));
+        BalanceDisplayer balanceDisplayer = Register(new BalanceDisplayer(balance, _balanceDisplayerEmitter));
+        Shop shop = Register(new Shop(playerData, _saveLoad, balance, avatars, _shopEmitter));
         AvatarDisplayer avatarDisplayer = Register(new AvatarDisplayer(playerData, avatars, shop, 
             _avatarDisplayerEmitter));
     }

@@ -565,6 +565,8 @@ GameObject:
   - component: {fileID: 213787889}
   - component: {fileID: 213787890}
   - component: {fileID: 213787891}
+  - component: {fileID: 213787893}
+  - component: {fileID: 213787892}
   m_Layer: 0
   m_Name: MenuStarter
   m_TagString: Untagged
@@ -604,6 +606,8 @@ MonoBehaviour:
   _questLoaderEmitter: {fileID: 213787889}
   _avatarDisplayerEmitter: {fileID: 213787890}
   _shopEmitter: {fileID: 213787891}
+  _balanceEmitter: {fileID: 213787893}
+  _balanceDisplayerEmitter: {fileID: 213787892}
 --- !u!114 &213787887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -680,6 +684,32 @@ MonoBehaviour:
   MoneyCostView: {fileID: 1058495218}
   AdCostView: {fileID: 1454486609}
   PurchaseButton: {fileID: 820032998}
+--- !u!114 &213787892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 213787884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f5c8a14cca4f8d4cb9099d770eea437, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BalanceText: {fileID: 672716965}
+--- !u!114 &213787893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 213787884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f415218fea30f5343af0b36774e079e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AddMoneyButton: {fileID: 661959976}
 --- !u!1 &232811911
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,16 +14,18 @@ public class Shop : IInitable, IDeinitable
 
     private PlayerData _playerData;
     private SaveLoad _saveLoad;
+    private Balance _balance;
     private Sprite[] _avatars;
     private ShopEmitter _emitter;
 
     private List<ShopItem> _items;
     private ShopItem _selectedItem;
 
-    public Shop(PlayerData playerData, SaveLoad saveLoad, Sprite[] avatars, ShopEmitter emitter)
+    public Shop(PlayerData playerData, SaveLoad saveLoad, Balance balance, Sprite[] avatars, ShopEmitter emitter)
     {
         _saveLoad = saveLoad;
         _playerData = playerData;
+        _balance = balance;
         _avatars = avatars;
         _emitter = emitter;
 
@@ -111,8 +113,7 @@ public class Shop : IInitable, IDeinitable
             ResetPurchaseInfo();
             _emitter.MoneyCostView.gameObject.SetActive(true);
             _emitter.MoneyCostView.SetCost(item.Cost);
-            // TODO: check if enough money
-            _emitter.PurchaseButton.interactable = true;
+            _emitter.PurchaseButton.interactable = _balance.Has(item.Cost);
         }
         else if (costType == CostType.Ad)
         {
