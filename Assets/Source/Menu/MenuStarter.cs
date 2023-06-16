@@ -13,6 +13,7 @@ public class MenuStarter : Starter
     [SerializeField] private ShopEmitter _shopEmitter;
     [SerializeField] private BalanceEmitter _balanceEmitter;
     [SerializeField] private BalanceDisplayerEmitter _balanceDisplayerEmitter;
+    [SerializeField] private Init _init;
 
     private SaveLoad _saveLoad;
 
@@ -20,7 +21,7 @@ public class MenuStarter : Starter
     {
         string lang = "ru"; // TODO: Get from localization
 
-        _saveLoad = new SaveLoad();
+        _saveLoad = new SaveLoad(_init);
         GameData gameData = LoadGameData(lang);
         PlayerData playerData = LoadPlayerData();
         Sprite[] avatars = LoadAvatars();
@@ -30,9 +31,9 @@ public class MenuStarter : Starter
         SceneLoader sceneLoader = Register(new SceneLoader());
         QuestPicker questPicker = Register(new QuestPicker(gameData, questsPreview, _questPickPanelEmitter));
         QuestLocker questLocker = Register(new QuestLocker(playerData, questPicker, _questLoaderEmitter));
-        Balance balance = Register(new Balance(playerData, _saveLoad, _balanceEmitter));
+        Balance balance = Register(new Balance(playerData, _saveLoad, _init, _balanceEmitter));
         BalanceDisplayer balanceDisplayer = Register(new BalanceDisplayer(balance, _balanceDisplayerEmitter));
-        Shop shop = Register(new Shop(playerData, _saveLoad, balance, avatars, _shopEmitter));
+        Shop shop = Register(new Shop(playerData, _saveLoad, _init, balance, avatars, _shopEmitter));
         AvatarDisplayer avatarDisplayer = Register(new AvatarDisplayer(playerData, avatars, shop, 
             _avatarDisplayerEmitter));
         QuestLoader questLoader = Register(new QuestLoader(sceneLoader, gameData, playerData, questPicker,
@@ -48,12 +49,7 @@ public class MenuStarter : Starter
 
     private PlayerData LoadPlayerData()
     {
-        if (_saveLoad.HasSave == true)
-        {
-            return _saveLoad.LoadPLayerData();
-        }
-
-        return new PlayerData();
+        return _saveLoad.LoadPLayerData();
     }
 
     private Sprite[] LoadAvatars()

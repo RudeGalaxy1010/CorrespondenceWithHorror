@@ -4,17 +4,22 @@ public class SaveLoad
 {
     private const string PlayerDataKey = "Player";
 
-    public bool HasSave => PlayerPrefs.HasKey(PlayerDataKey);
+    private Init _init;
+
+    public SaveLoad(Init init)
+    {
+        _init = init;
+    }
 
     public void SavePlayerData(PlayerData playerData)
     {
-        string data = JsonUtility.ToJson(playerData);
-        PlayerPrefs.SetString(PlayerDataKey, data);
+        _init.playerData = playerData;
+        _init.Save();
     }
 
     public PlayerData LoadPLayerData()
     {
-        string data = PlayerPrefs.GetString(PlayerDataKey);
-        return JsonUtility.FromJson<PlayerData>(data);
+        // TODO: Load Save!
+        return _init.playerData;
     }
 }

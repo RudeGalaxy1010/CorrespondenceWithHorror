@@ -567,6 +567,7 @@ GameObject:
   - component: {fileID: 213787891}
   - component: {fileID: 213787893}
   - component: {fileID: 213787892}
+  - component: {fileID: 213787894}
   m_Layer: 0
   m_Name: MenuStarter
   m_TagString: Untagged
@@ -608,6 +609,7 @@ MonoBehaviour:
   _shopEmitter: {fileID: 213787891}
   _balanceEmitter: {fileID: 213787893}
   _balanceDisplayerEmitter: {fileID: 213787892}
+  _init: {fileID: 213787894}
 --- !u!114 &213787887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -711,6 +713,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AddMoneyButton: {fileID: 661959976}
+--- !u!114 &213787894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 213787884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31f09d22dc6aec549b0a95f3b0bb4653, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platform: 0
+  gameArterPrefab: {fileID: 0}
+  mobile: 0
+  leaderboardBtn: {fileID: 0}
+  language: 
+  playerData:
+    Rating: 0
+    LastOpenedQuestId: 0
+    Money: 0
+    PlayedQuestsCount: 0
+    CurrentAvatarId: 0
+    OpenedAvatarIds: 00000000
+  colorDebug: 
 --- !u!1 &232811911
 GameObject:
   m_ObjectHideFlags: 0

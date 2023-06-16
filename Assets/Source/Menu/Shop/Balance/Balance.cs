@@ -9,14 +9,16 @@ public class Balance : IInitable, IDeinitable
 
     private PlayerData _playerData;
     private SaveLoad _saveLoad;
+    private Init _init;
     private BalanceEmitter _balanceEmitter;
 
     private int _money;
 
-    public Balance(PlayerData playerData, SaveLoad saveLoad, BalanceEmitter emitter)
+    public Balance(PlayerData playerData, SaveLoad saveLoad, Init init, BalanceEmitter emitter)
     {
         _playerData = playerData;
         _saveLoad = saveLoad;
+        _init = init;
         _balanceEmitter = emitter;
         _money = _playerData.Money;
     }
@@ -27,11 +29,13 @@ public class Balance : IInitable, IDeinitable
     public void Init()
     {
         _balanceEmitter.AddMoneyButton.onClick.AddListener(OnAddMoneyButtonClicked);
+        _init.OnAddMoney += OnMoneyAdded;
     }
 
     public void Deinit()
     {
         _balanceEmitter.AddMoneyButton.onClick.RemoveListener(OnAddMoneyButtonClicked);
+        _init.OnAddMoney -= OnMoneyAdded;
     }
 
     public void AddMoney(int value)
@@ -68,7 +72,11 @@ public class Balance : IInitable, IDeinitable
 
     private void OnAddMoneyButtonClicked()
     {
-        // TODO: Call Ad
+        _init.ShowRewardedAd(AdsTags.AddMoneyTag);
+    }
+
+    private void OnMoneyAdded()
+    {
         AddMoney(RewardMoney);
     }
 }

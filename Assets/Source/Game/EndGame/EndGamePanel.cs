@@ -19,21 +19,24 @@ public class EndGamePanel : MonoBehaviour
     [SerializeField] private Button _homeButton;
 
     private SceneLoader _sceneLoader;
+    private Init _init;
     private EndGame _endGame;
     private RewardCalculator _rewardCalculator;
     private GameResult _gameResult;
 
-    public void Construct(SceneLoader sceneLoader, EndGame endGame, RewardCalculator rewardCalculator)
+    public void Construct(SceneLoader sceneLoader, Init init, EndGame endGame, RewardCalculator rewardCalculator)
     {
         _sceneLoader = sceneLoader;
+        _init = init;
         _endGame = endGame;
         _rewardCalculator = rewardCalculator;
-        _endGame.GameEnded += OnGameEnded;
     }
 
     private void OnEnable()
     {
+        _endGame.GameEnded += OnGameEnded;
         _adsButton.Clicked += OnAdsButtonClicked;
+        _init.OnRewardDouble += OnRewardDouble;
         _nextButton.onClick.AddListener(OnNextButtonClicked);
         _againButton.onClick.AddListener(OnAgainButtonClicked);
         _homeButton.onClick.AddListener(OnHomeButtonClicked);
@@ -41,7 +44,9 @@ public class EndGamePanel : MonoBehaviour
 
     private void OnDisable()
     {
+        _endGame.GameEnded -= OnGameEnded;
         _adsButton.Clicked -= OnAdsButtonClicked;
+        _init.OnRewardDouble -= OnRewardDouble;
         _nextButton.onClick.RemoveListener(OnNextButtonClicked);
         _againButton.onClick.RemoveListener(OnAgainButtonClicked);
         _homeButton.onClick.RemoveListener(OnHomeButtonClicked);
@@ -73,6 +78,11 @@ public class EndGamePanel : MonoBehaviour
         _panel.SetActive(true);
     }
 
+    private void OnRewardDouble()
+    {
+        UpdateReward(_gameResult, true);
+    }
+
     private void UpdateReward(GameResult result, bool isAdsShown)
     {
         int reward = _rewardCalculator.GetReward(result, isAdsShown);
@@ -99,9 +109,7 @@ public class EndGamePanel : MonoBehaviour
     private void OnAdsButtonClicked()
     {
         _adsButton.gameObject.SetActive(false);
-        Debug.Log("Ads button clicked");
-        // TODO: call ads
-        UpdateReward(_gameResult, true);
+        _init.ShowRewardedAd(AdsTags.DoubleRewardTag);
     }
 
     private void OnNextButtonClicked()

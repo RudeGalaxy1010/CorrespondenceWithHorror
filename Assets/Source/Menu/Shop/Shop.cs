@@ -16,17 +16,19 @@ public class Shop : IInitable, IDeinitable
     private SaveLoad _saveLoad;
     private Balance _balance;
     private Sprite[] _avatars;
+    private Init _init;
     private ShopEmitter _emitter;
 
     private List<ShopItem> _items;
     private ShopItem _selectedItem;
 
-    public Shop(PlayerData playerData, SaveLoad saveLoad, Balance balance, Sprite[] avatars, ShopEmitter emitter)
+    public Shop(PlayerData playerData, SaveLoad saveLoad, Init init, Balance balance, Sprite[] avatars, ShopEmitter emitter)
     {
         _saveLoad = saveLoad;
         _playerData = playerData;
         _balance = balance;
         _avatars = avatars;
+        _init = init;
         _emitter = emitter;
 
         ResetPurchaseInfo();
@@ -35,6 +37,7 @@ public class Shop : IInitable, IDeinitable
 
     public void Init()
     {
+        _init.OnOpenSkin += OnSkinOpened;
         _emitter.ShopOpenButton.onClick.AddListener(OnShopOpenButtonClicked);
         _emitter.ShopCloseButton.onClick.AddListener(OnShopCloseButtonClicked);
         _emitter.PurchaseButton.onClick.AddListener(OnPurchaseButtonClicked);
@@ -42,6 +45,7 @@ public class Shop : IInitable, IDeinitable
 
     public void Deinit()
     {
+        _init.OnOpenSkin -= OnSkinOpened;
         _emitter.ShopOpenButton.onClick.RemoveListener(OnShopOpenButtonClicked);
         _emitter.ShopCloseButton.onClick.RemoveListener(OnShopCloseButtonClicked);
         _emitter.PurchaseButton.onClick.RemoveListener(OnPurchaseButtonClicked);
@@ -133,9 +137,16 @@ public class Shop : IInitable, IDeinitable
         }
         else if (costType == CostType.Ad)
         {
-            // TODO: show Ad
+            _init.ShowRewardedAd(AdsTags.OpenSkinTag);
+            ResetPurchaseInfo();
+            return;
         }
 
+        ApplyPurchase();
+    }
+
+    private void ApplyPurchase()
+    {
         _playerData.OpenedAvatarIds = _playerData.OpenedAvatarIds.Append(_selectedItem.AvatarId).ToArray();
         ApplyAvatar(_selectedItem.AvatarId);
         _saveLoad.SavePlayerData(_playerData);
@@ -160,5 +171,10 @@ public class Shop : IInitable, IDeinitable
     {
         _playerData.CurrentAvatarId = avatarId;
         AvatarUpdated?.Invoke();
+    }
+
+    private void OnSkinOpened()
+    {
+        ApplyPurchase();
     }
 }

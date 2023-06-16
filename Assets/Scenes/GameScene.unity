@@ -342,6 +342,7 @@ GameObject:
   - component: {fileID: 132338229}
   - component: {fileID: 132338230}
   - component: {fileID: 132338231}
+  - component: {fileID: 132338232}
   m_Layer: 0
   m_Name: Starter
   m_TagString: Untagged
@@ -381,6 +382,7 @@ MonoBehaviour:
   _menuLoaderEmitter: {fileID: 132338229}
   _endGamePanel: {fileID: 132338230}
   _soundPlayerEmitter: {fileID: 132338231}
+  _init: {fileID: 132338232}
 --- !u!114 &132338227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -461,6 +463,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SoundAudioSource: {fileID: 69150928}
   MessageSoundClip: {fileID: 8300000, guid: f7e8035c73dc42940af89cce554f6c31, type: 3}
+--- !u!114 &132338232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 132338224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31f09d22dc6aec549b0a95f3b0bb4653, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platform: 0
+  gameArterPrefab: {fileID: 0}
+  mobile: 0
+  leaderboardBtn: {fileID: 0}
+  language: 
+  playerData:
+    Rating: 0
+    LastOpenedQuestId: 0
+    Money: 0
+    PlayedQuestsCount: 0
+    CurrentAvatarId: 0
+    OpenedAvatarIds: 00000000
+  colorDebug: 
 --- !u!1 &137242913
 GameObject:
   m_ObjectHideFlags: 0

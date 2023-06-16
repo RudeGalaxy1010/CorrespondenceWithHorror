@@ -8,6 +8,7 @@ public class GameStarter : Starter, ISceneLoadHandler<LevelData>
     [SerializeField] private MenuLoaderEmitter _menuLoaderEmitter;
     [SerializeField] private EndGamePanel _endGamePanel;
     [SerializeField] private SoundPlayerEmitter _soundPlayerEmitter;
+    [SerializeField] private Init _init;
 
     private LevelData _levelData;
     private SaveLoad _saveLoad;
@@ -25,7 +26,7 @@ public class GameStarter : Starter, ISceneLoadHandler<LevelData>
             return;
         }
 
-        _saveLoad = new SaveLoad();
+        _saveLoad = new SaveLoad(_init);
         SceneLoader sceneLoader = new SceneLoader(_levelData);
         SoundPlayer soundPlayer = new SoundPlayer(_soundPlayerEmitter);
         DialogueDisplayer dialogueDisplayer = Register(new DialogueDisplayer(_levelData.Quest, _levelData.HeroAvatar, 
@@ -36,6 +37,6 @@ public class GameStarter : Starter, ISceneLoadHandler<LevelData>
         ResultSaver resultSaver = Register(
             new ResultSaver(_levelData, _saveLoad, endGame, _endGamePanel));
         RewardCalculator rewardCalculator = new RewardCalculator(_levelData.Quest);
-        _endGamePanel.Construct(sceneLoader, endGame, rewardCalculator);
+        _endGamePanel.Construct(sceneLoader, _init, endGame, rewardCalculator);
     }
 }
