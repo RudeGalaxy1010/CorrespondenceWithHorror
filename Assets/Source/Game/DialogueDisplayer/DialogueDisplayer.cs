@@ -8,7 +8,7 @@ public class DialogueDisplayer : IInitable
     private const int StartQuestion = 0;
     private const float NextQuestionDelay = 1f;
     private const float UpdateFocusDelay = 0.1f;
-    private const float EndGameDelay = 4f;
+    private const float EndGameDelay = 2.5f;
 
     public event Action<Question> QuestionChanged;
 

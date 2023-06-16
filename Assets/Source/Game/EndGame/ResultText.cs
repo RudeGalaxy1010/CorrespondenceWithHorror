@@ -5,8 +5,8 @@ public class ResultText : MonoBehaviour
 {
     private const string VictoryText = "Победа";
     private const string DefeatText = "Провал";
-    private const string VictoryColor = "FFEB60";
-    private const string DefeatColor = "FF6100";
+    private const string VictoryColor = "#FFEB60";
+    private const string DefeatColor = "#FF6100";
 
     [SerializeField] private TMP_Text _resultText;
 
