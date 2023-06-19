@@ -4,7 +4,7 @@ public class MenuStarter : Starter
 {
     private const string QuestsNamesPath = "GameData";
     private const string AvatarsPath = "AvatarsAtlas";
-    private const string QuestsPreviewPath = "HeroesAtlas";
+    private const string HeroAvatarsPath = "HeroesAtlas";
 
     [SerializeField] private QuestPickerEmitter _questPickPanelEmitter;
     [SerializeField] private RatingDisplayerEmitter _ratingDisplayerEmitter;
@@ -25,11 +25,11 @@ public class MenuStarter : Starter
         GameData gameData = LoadGameData(lang);
         PlayerData playerData = LoadPlayerData();
         Sprite[] avatars = LoadAvatars();
-        Sprite[] questsPreview = LoadQuestsPreview();
+        Sprite[] heroAvatars = LoadHeroAvatars();
 
         RatingDisplayer ratingDisplayer = new RatingDisplayer(gameData, playerData, _ratingDisplayerEmitter);
         SceneLoader sceneLoader = Register(new SceneLoader());
-        QuestPicker questPicker = Register(new QuestPicker(gameData, questsPreview, _questPickPanelEmitter));
+        QuestPicker questPicker = Register(new QuestPicker(gameData, heroAvatars, _questPickPanelEmitter));
         QuestLocker questLocker = Register(new QuestLocker(playerData, questPicker, _questLoaderEmitter));
         Balance balance = Register(new Balance(playerData, _saveLoad, _init, _balanceEmitter));
         BalanceDisplayer balanceDisplayer = Register(new BalanceDisplayer(balance, _balanceDisplayerEmitter));
@@ -37,7 +37,7 @@ public class MenuStarter : Starter
         AvatarDisplayer avatarDisplayer = Register(new AvatarDisplayer(playerData, avatars, shop, 
             _avatarDisplayerEmitter));
         QuestLoader questLoader = Register(new QuestLoader(sceneLoader, gameData, playerData, questPicker,
-            avatarDisplayer, _questLoaderEmitter));
+            avatarDisplayer, heroAvatars, _questLoaderEmitter));
     }
 
     private GameData LoadGameData(string lang)
@@ -57,8 +57,8 @@ public class MenuStarter : Starter
         return Resources.LoadAll<Sprite>(AvatarsPath);
     }
 
-    private Sprite[] LoadQuestsPreview()
+    private Sprite[] LoadHeroAvatars()
     {
-        return Resources.LoadAll<Sprite>(QuestsPreviewPath);
+        return Resources.LoadAll<Sprite>(HeroAvatarsPath);
     }
 }

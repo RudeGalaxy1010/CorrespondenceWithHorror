@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 using UnityEngine;
 
 public class QuestPicker : IInitable, IDeinitable
@@ -10,14 +9,14 @@ public class QuestPicker : IInitable, IDeinitable
     public event Action<Quest> QuestUpdated;
 
     private GameData _gameData;
-    private Sprite[] _questsPreview;
+    private Sprite[] _heroAvatars;
     private QuestPickerEmitter _emitter;
     private int _currentQuestPointer;
 
-    public QuestPicker(GameData gameData, Sprite[] questsPreview, QuestPickerEmitter emitter)
+    public QuestPicker(GameData gameData, Sprite[] heroAvatars, QuestPickerEmitter emitter)
     {
         _gameData = gameData;
-        _questsPreview = questsPreview;
+        _heroAvatars = heroAvatars;
         _emitter = emitter;
         _currentQuestPointer = 0;
         Update();
@@ -73,18 +72,16 @@ public class QuestPicker : IInitable, IDeinitable
 
     private void UpdateQuestName()
     {
-        _emitter.QuestNameText.text = _gameData.Quests.Length > 0 ?
-            _gameData.Quests[_currentQuestPointer].Name : DefaultQuestName;
+        _emitter.QuestNameText.text = _gameData.Quests.Length > 0 ? CurrentQuest.Name : DefaultQuestName;
     }
 
     private void UpdateAvatar()
     {
-        _emitter.AvatarImage.sprite = _questsPreview.FirstOrDefault(s => s != null && s.name == CurrentQuest.PreviewPath);
+        _emitter.AvatarImage.sprite = CurrentQuest.SelectHeroAvatar(_heroAvatars);
     }
 
     private void UpdateTask()
     {
-        _emitter.TaskText.text = _gameData.Quests.Length > 0 ?
-            _gameData.Quests[_currentQuestPointer].Task : DefaultTask;
+        _emitter.TaskText.text = _gameData.Quests.Length > 0 ? CurrentQuest.Task : DefaultTask;
     }
 }

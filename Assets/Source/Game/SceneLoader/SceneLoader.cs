@@ -8,7 +8,9 @@ public class SceneLoader
 
     private LevelData _levelData;
 
-    public SceneLoader(LevelData questLevelData = null)
+    public SceneLoader() { }
+
+    public SceneLoader(LevelData questLevelData)
     {
         _levelData = questLevelData;
     }

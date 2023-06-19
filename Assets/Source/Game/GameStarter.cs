@@ -29,7 +29,7 @@ public class GameStarter : Starter, ISceneLoadHandler<LevelData>
         _saveLoad = new SaveLoad(_init);
         SceneLoader sceneLoader = new SceneLoader(_levelData);
         SoundPlayer soundPlayer = new SoundPlayer(_soundPlayerEmitter);
-        DialogueDisplayer dialogueDisplayer = Register(new DialogueDisplayer(_levelData.Quest, _levelData.HeroAvatar, 
+        DialogueDisplayer dialogueDisplayer = Register(new DialogueDisplayer(_levelData.Quest, _levelData.HeroAvatars, 
             _levelData.PlayerAvatar, soundPlayer, _dialogueDisplayerEmitter));
         AnswerPicker answerPicker = Register(new AnswerPicker(dialogueDisplayer, _answerPickerEmitter));
         EndGame endGame = Register(new EndGame(dialogueDisplayer));
