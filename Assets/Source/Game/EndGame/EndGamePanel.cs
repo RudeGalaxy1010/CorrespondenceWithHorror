@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EndGamePanel : MonoBehaviour
+public class EndGamePanel : MonoBehaviour, IInitable, IDeinitable
 {
     public event Action<int> RewardChanged;
     public event Action NeedSave;
@@ -32,7 +32,7 @@ public class EndGamePanel : MonoBehaviour
         _rewardCalculator = rewardCalculator;
     }
 
-    private void OnEnable()
+    public void Init()
     {
         _endGame.GameEnded += OnGameEnded;
         _adsButton.Clicked += OnAdsButtonClicked;
@@ -42,7 +42,7 @@ public class EndGamePanel : MonoBehaviour
         _homeButton.onClick.AddListener(OnHomeButtonClicked);
     }
 
-    private void OnDisable()
+    public void Deinit()
     {
         _endGame.GameEnded -= OnGameEnded;
         _adsButton.Clicked -= OnAdsButtonClicked;

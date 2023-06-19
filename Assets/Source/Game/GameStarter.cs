@@ -34,9 +34,10 @@ public class GameStarter : Starter, ISceneLoadHandler<LevelData>
         AnswerPicker answerPicker = Register(new AnswerPicker(dialogueDisplayer, _answerPickerEmitter));
         EndGame endGame = Register(new EndGame(dialogueDisplayer));
         MenuLoader menuLoader = Register(new MenuLoader(sceneLoader, _menuLoaderEmitter));
+        EndGamePanel endGamePanel = Register(_endGamePanel);
         ResultSaver resultSaver = Register(
-            new ResultSaver(_levelData, _saveLoad, endGame, _endGamePanel));
+            new ResultSaver(_levelData, _saveLoad, endGame, endGamePanel));
         RewardCalculator rewardCalculator = new RewardCalculator(_levelData.Quest);
-        _endGamePanel.Construct(sceneLoader, _init, endGame, rewardCalculator);
+        endGamePanel.Construct(sceneLoader, _init, endGame, rewardCalculator);
     }
 }
