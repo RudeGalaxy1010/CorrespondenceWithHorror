@@ -91,12 +91,13 @@ public class Shop : IInitable, IDeinitable
         for (int i = 0; i < _avatars.Length; i++)
         {
             ShopItem item = Object.Instantiate(_emitter.ShopItemPrefab, _emitter.ItemsContainer);
+            _items.Add(item);
             int avatarId = int.Parse(_avatars[i].name);
             bool isAvatarOpened = _playerData.OpenedAvatarIds.Contains(avatarId);
-            int cost = i * CostMultiplier;
-            item.Construct(_avatars[i], cost, isAvatarOpened);
+            bool isAvatarChosen = _playerData.CurrentAvatarId == avatarId;
+            int cost = GetCostType(item) == CostType.Money ? i * CostMultiplier : 0;
+            item.Construct(_avatars[i], cost, isAvatarOpened, isAvatarChosen);
             item.Selected += OnItemSelected;
-            _items.Add(item);
         }
     }
 
@@ -106,6 +107,7 @@ public class Shop : IInitable, IDeinitable
         {
             ApplyAvatar(item.AvatarId);
             _saveLoad.SavePlayerData(_playerData);
+            ResetPurchaseInfo();
             return;
         }
 
